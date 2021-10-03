@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'dashboard_screen.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -109,10 +111,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(
                           height: 130,
                         ),
-                        Container(
-                          alignment: Alignment.center,
-                          height: 80,
-                          child: Image.asset("assets/img/login_btn.png"),
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Dashboard()));
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            height: 80,
+                            child: Image.asset("assets/img/login_btn.png"),
+                          ),
                         )
                       ],
                     ),
