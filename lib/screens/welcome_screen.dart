@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'login_screen.dart';
+
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
@@ -19,14 +21,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                alignment: Alignment.topLeft,
-                height: 300,
-                child: Stack(
-                  children: [
-                    Image.asset("assets/img/vector_1.png"),
-                    Image.asset("assets/img/vector_2.png"),
-                  ],
+              Expanded(
+	                child: Container(
+                  alignment: Alignment.topLeft,
+                  height: 300,
+                  child: Stack(
+                    children: [
+                      Image.asset("assets/img/vector_1.png"),
+                      Image.asset("assets/img/vector_2.png"),
+                    ],
+                  ),
                 ),
               ),
               Center(
@@ -40,7 +44,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               //   height: 200,
               // ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+                },
                 child: Container(
                   height: 80,
                   alignment: Alignment.center,

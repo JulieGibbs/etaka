@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(12, 0, 0, 10),
                           child: Text(
-                            "Into Your E-Wallet",
+                            "Into Your eTaka Wallet",
                             style: TextStyle(fontSize: 20),
                           ),
                         ),
