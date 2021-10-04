@@ -63,10 +63,10 @@ class PayBillsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(5.0),
       child: Container(
-          height: 70,
-          width: 50,
+          height: 80,
+          width: 55,
           child: Column(
             children: [Image.asset(asset), SizedBox(height: 2), Text(title)],
           )),

@@ -1,3 +1,4 @@
+import 'package:etaka/components/pie_chart.dart';
 import 'package:etaka/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -152,7 +153,28 @@ class _DashboardState extends State<Dashboard> {
                   ],
                 )
               ],
-            ))
+            )),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Container(
+            decoration: BoxDecoration(
+                color: Color(0xFFEEF2F8),
+                borderRadius: BorderRadius.circular(15)),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Text("Expenses"),
+                    Spacer(),
+                    Container(
+                        height: 200, width: 200, child: PieChartSample2()),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
       ]),
     );
   }
