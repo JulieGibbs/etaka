@@ -53,3 +53,23 @@ class DashBoardMainItemCard extends StatelessWidget {
     );
   }
 }
+
+class PayBillsItem extends StatelessWidget {
+  final String asset;
+  final String title;
+  const PayBillsItem({Key? key, required this.asset, required this.title})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Container(
+          height: 70,
+          width: 50,
+          child: Column(
+            children: [Image.asset(asset), SizedBox(height: 2), Text(title)],
+          )),
+    );
+  }
+}
