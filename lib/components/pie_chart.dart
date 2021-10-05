@@ -40,17 +40,12 @@ class PieChart2State extends State {
             ),
           ),
         ),
-        Indicator(
-          color: Color(0xff0293ee),
-          text: 'First',
-          isSquare: true,
-        ),
       ],
     );
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(4, (i) {
+    return List.generate(3, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 25.0 : 16.0;
       final radius = isTouched ? 30.0 : 15.0;
@@ -82,18 +77,6 @@ class PieChart2State extends State {
         case 2:
           return PieChartSectionData(
             showTitle: isTouched,
-            color: const Color(0xff845bef),
-            value: 15,
-            title: '15%',
-            radius: radius,
-            titleStyle: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xffffffff)),
-          );
-        case 3:
-          return PieChartSectionData(
-            showTitle: isTouched,
             color: const Color(0xff13d38e),
             value: 15,
             title: '15%',
@@ -113,7 +96,6 @@ class PieChart2State extends State {
 class Indicator extends StatelessWidget {
   final Color color;
   final String text;
-  final bool isSquare;
   final double size;
   final Color textColor;
 
@@ -121,32 +103,61 @@ class Indicator extends StatelessWidget {
     Key? key,
     required this.color,
     required this.text,
-    required this.isSquare,
     this.size = 16,
     this.textColor = const Color(0xff505050),
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Container(
-          width: size,
-          height: size,
-          decoration: BoxDecoration(
-            shape: isSquare ? BoxShape.rectangle : BoxShape.circle,
-            color: color,
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: Card(
+        elevation: 3,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: color,
+            ),
+            child: Text(
+              text,
+              style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            )),
+      ),
+    );
+  }
+}
+
+class IndicatorRow extends StatelessWidget {
+  const IndicatorRow({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Indicator(
+            color: Color(0xff0293ee),
+            text: '40% Send Money',
           ),
-        ),
-        const SizedBox(
-          width: 4,
-        ),
-        Text(
-          text,
-          style: TextStyle(
-              fontSize: 16, fontWeight: FontWeight.bold, color: textColor),
-        )
-      ],
+          Indicator(
+            color: const Color(0xfff8b250),
+            text: '20% Recharge',
+          ),
+          Indicator(
+            color: const Color(0xff13d38e),
+            text: '40% Cashout',
+          ),
+        ],
+      ),
     );
   }
 }
