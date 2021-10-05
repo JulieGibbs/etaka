@@ -107,7 +107,7 @@ class _DashboardState extends State<Dashboard> {
                   child: Row(
                     children: [
                       Text(
-                        "Pay Bills",
+                        "Pay Bills".toUpperCase(),
                         style: TextStyle(
                             fontSize: 18,
                             color: Colors.black87.withOpacity(0.8)),
@@ -130,26 +130,25 @@ class _DashboardState extends State<Dashboard> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     PayBillsItem(
-                        asset: "assets/img/logo_2.png", title: "Electricity"),
+                        asset: "assets/img/electricity.png",
+                        title: "Electricity"),
+                    PayBillsItem(asset: "assets/img/gas.png", title: "Gas"),
+                    PayBillsItem(asset: "assets/img/water.png", title: "Water"),
                     PayBillsItem(
-                        asset: "assets/img/logo_2.png", title: "Electricity"),
-                    PayBillsItem(
-                        asset: "assets/img/logo_2.png", title: "Electricity"),
-                    PayBillsItem(
-                        asset: "assets/img/logo_2.png", title: "Electricity")
+                        asset: "assets/img/education.png", title: "Education")
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     PayBillsItem(
-                        asset: "assets/img/logo_2.png", title: "Electricity"),
+                        asset: "assets/img/internet.png", title: "Internet"),
                     PayBillsItem(
-                        asset: "assets/img/logo_2.png", title: "Electricity"),
+                        asset: "assets/img/credit-card.png",
+                        title: "Credit Card"),
                     PayBillsItem(
-                        asset: "assets/img/logo_2.png", title: "Electricity"),
-                    PayBillsItem(
-                        asset: "assets/img/logo_2.png", title: "Electricity")
+                        asset: "assets/img/telephone.png", title: "Telephone"),
+                    PayBillsItem(asset: "assets/img/tv.png", title: "TV")
                   ],
                 )
               ],
@@ -157,21 +156,58 @@ class _DashboardState extends State<Dashboard> {
         SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.all(5.0),
-          child: Container(
-            decoration: BoxDecoration(
-                color: Color(0xFFEEF2F8),
-                borderRadius: BorderRadius.circular(15)),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Text("Expenses"),
-                    Spacer(),
-                    Container(
-                        height: 200, width: 200, child: PieChartSample2()),
-                  ],
-                ),
-              ],
+          child: Card(
+            elevation: 5,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Color(0xFFEEF2F8),
+                  borderRadius: BorderRadius.circular(15)),
+              child: Column(
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Expenses".toUpperCase(),
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.normal),
+                            ),
+                            SizedBox(height: 2),
+                            Text(
+                              "1 Sep 2021 - 30 Sep 2021",
+                              style: TextStyle(
+                                  color: Colors.black38,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal),
+                            ),
+                            SizedBox(height: 10),
+                            Text(
+                              "BDT 26,600",
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Spacer(),
+                      Container(
+                          height: 130, width: 130, child: PieChartSample2()),
+                    ],
+                  ),
+                  IndicatorRow()
+                ],
+              ),
             ),
           ),
         ),
