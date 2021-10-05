@@ -65,11 +65,30 @@ class PayBillsItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-          height: 80,
-          width: 55,
+          // height: 80,
+          // width: 55,
           child: Column(
-            children: [Image.asset(asset), SizedBox(height: 2), Text(title)],
-          )),
+        children: [
+          Card(
+            elevation: 3,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Container(
+              padding: const EdgeInsets.all(8.0),
+              height: 55,
+              width: 55,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Image.asset(asset),
+            ),
+          ),
+          SizedBox(height: 2),
+          Text(title)
+        ],
+      )),
     );
   }
 }
