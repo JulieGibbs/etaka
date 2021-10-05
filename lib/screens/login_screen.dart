@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Account Number",
+                                "Phone Number",
                                 style: TextStyle(
                                     color: Colors.grey.shade600, fontSize: 18),
                               ),
@@ -112,8 +112,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 130,
                         ),
                         GestureDetector(
-                          onTap: (){
-                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Dashboard()));
+                          onTap: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Dashboard()));
                           },
                           child: Container(
                             alignment: Alignment.center,
