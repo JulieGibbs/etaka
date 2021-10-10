@@ -19,14 +19,13 @@ class _DashboardState extends State<Dashboard> {
         Container(
           padding: EdgeInsets.all(8),
           alignment: Alignment.topRight,
-          height: 240,
           color: Color(0xFF005CEE),
           child: Column(
             children: [
               SafeArea(
                 child: Row(children: [
                   Padding(
-                    padding: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,12 +33,12 @@ class _DashboardState extends State<Dashboard> {
                       children: [
                         Text("BDT 24,000",
                             style: TextStyle(
-                                fontSize: 30,
+                                fontSize: 26,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold)),
                         Text("active balance".toUpperCase(),
                             style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 14,
                                 color: Colors.white.withOpacity(0.6))),
                       ],
                     ),
@@ -72,7 +71,7 @@ class _DashboardState extends State<Dashboard> {
                 ]),
               ),
               SizedBox(height: 10),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                 DashBoardMainItemCard(
                   asset: "assets/svg/Sendmoney.svg",
                   title: "SEND MONEY",
