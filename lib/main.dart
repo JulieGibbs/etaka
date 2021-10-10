@@ -1,3 +1,4 @@
+import 'package:etaka/screens/cash_out_screen.dart';
 import 'package:etaka/screens/login_screen.dart';
 import 'package:etaka/screens/send_money_confirmation.dart';
 import 'package:etaka/screens/send_money_screen.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: SendMoneyScreen(),
+      home: CashOutScreen(),
     );
   }
 }
