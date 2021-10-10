@@ -3,6 +3,8 @@ import 'package:etaka/components/reuseable_widgets.dart';
 import 'package:etaka/screens/send_money_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'cash_out_screen.dart';
+
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
 
@@ -85,7 +87,12 @@ class _DashboardState extends State<Dashboard> {
                 DashBoardMainItemCard(
                   asset: "assets/svg/Cashout.svg",
                   title: "CASH OUT",
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CashOutScreen()));
+                  },
                 ),
                 DashBoardMainItemCard(
                   asset: "assets/svg/Recharge.svg",
