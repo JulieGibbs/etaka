@@ -1,5 +1,6 @@
 import 'package:etaka/components/pie_chart.dart';
 import 'package:etaka/components/reuseable_widgets.dart';
+import 'package:etaka/screens/send_money_screen.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -75,7 +76,12 @@ class _DashboardState extends State<Dashboard> {
                 DashBoardMainItemCard(
                   asset: "assets/svg/Sendmoney.svg",
                   title: "SEND MONEY",
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SendMoneyScreen()));
+                  },
                 ),
                 DashBoardMainItemCard(
                   asset: "assets/svg/Cashout.svg",
