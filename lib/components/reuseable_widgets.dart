@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'constant.dart';
+
 class DashBoardMainItemCard extends StatelessWidget {
   final String asset;
   final String title;
@@ -86,6 +88,83 @@ class PayBillsItem extends StatelessWidget {
           Text(title)
         ],
       )),
+    );
+  }
+}
+
+class CustomBackButton extends StatelessWidget {
+  const CustomBackButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 30, 0, 0),
+      child: Row(
+        children: [
+          ClipOval(
+            child: Material(
+              color: Colors
+                  .grey.shade200, //To let the Container background be displayed
+              child: IconButton(
+                  icon: Icon(
+                    Icons.arrow_back_ios_outlined,
+                    color: primaryColor,
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomScaffold extends StatelessWidget {
+  final Widget body;
+  const CustomScaffold({Key? key, required this.body}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    double h = MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Container(
+                height: h,
+                width: w,
+                child: Image.asset("assets/img/bck_r.png")),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Container(
+                  alignment: Alignment.topRight,
+                  width: double.infinity,
+                  height: 300,
+                  child: Stack(
+                    children: [
+                      Image.asset("assets/img/vector_1_r.png"),
+                      Image.asset("assets/img/vector_2_r.png"),
+                    ],
+                  ),
+                )
+              ],
+            ),
+            Column(
+              children: [
+                CustomBackButton(),
+                SingleChildScrollView(
+                  child: body,
+                )
+              ],
+            )
+          ],
+        ),
+      ),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:etaka/components/constant.dart';
 import 'package:etaka/components/pie_chart.dart';
 import 'package:etaka/components/reuseable_widgets.dart';
 import 'package:etaka/screens/send_money_screen.dart';
@@ -44,6 +45,19 @@ class _DashboardState extends State<Dashboard> {
                                 color: Colors.white.withOpacity(0.6))),
                       ],
                     ),
+                  ),
+                  ElevatedButton(
+                    child: Text(' + Add Money',
+                        style: TextStyle(
+                            color: primaryColor, fontWeight: FontWeight.bold)),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      primary: Colors.white,
+                    ),
+                    onPressed: () {
+                      print('Pressed');
+                    },
                   ),
                   Spacer(),
                   ClipOval(

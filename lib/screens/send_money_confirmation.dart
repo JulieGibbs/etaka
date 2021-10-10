@@ -1,4 +1,5 @@
 import 'package:etaka/components/constant.dart';
+import 'package:etaka/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
 
 class SendMoneyConfirmation extends StatefulWidget {
@@ -43,13 +44,14 @@ class _SendMoneyConfirmationState extends State<SendMoneyConfirmation> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  CustomBackButton(),
                   SizedBox(
-                    height: 200,
+                    height: 150,
                   ),
                   Container(
-                    color: Colors.white,
+                    // color: Colors.white,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
@@ -60,7 +62,7 @@ class _SendMoneyConfirmationState extends State<SendMoneyConfirmation> {
                           child: Text(
                             "Send Money",
                             style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
+                                fontSize: 30, fontWeight: FontWeight.w500),
                           ),
                         ),
                         Center(
@@ -113,22 +115,17 @@ class _SendMoneyConfirmationState extends State<SendMoneyConfirmation> {
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(50, 15, 50, 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Enter Pin",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 18),
-                              ),
-                              TextField(
-                                obscureText: true,
-                                decoration: InputDecoration(hintText: "******"),
-                              ),
-                            ],
+                          child: TextField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              hintText: "******",
+                              labelText: "Enter Pin",
+                            ),
                           ),
                         ),
-                        SizedBox(height: 20,),
+                        SizedBox(
+                          height: 20,
+                        ),
                         Center(
                           child: ElevatedButton(
                             child: Padding(

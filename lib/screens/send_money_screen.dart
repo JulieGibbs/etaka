@@ -1,4 +1,5 @@
 import 'package:etaka/components/constant.dart';
+import 'package:etaka/components/reuseable_widgets.dart';
 import 'package:etaka/screens/send_money_confirmation.dart';
 import 'package:flutter/material.dart';
 
@@ -44,8 +45,9 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  CustomBackButton(),
                   SizedBox(
-                    height: 200,
+                    height: 160,
                   ),
                   Container(
                     color: Colors.transparent,
@@ -61,7 +63,7 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                           child: Text(
                             "Send Money",
                             style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
+                                fontSize: 30, fontWeight: FontWeight.w500),
                           ),
                         ),
                         SizedBox(
