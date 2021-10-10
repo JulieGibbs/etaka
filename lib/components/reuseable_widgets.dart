@@ -97,25 +97,28 @@ class CustomBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 30, 0, 0),
-      child: Row(
-        children: [
-          ClipOval(
-            child: Material(
-              color: Colors
-                  .grey.shade200, //To let the Container background be displayed
-              child: IconButton(
-                  icon: Icon(
-                    Icons.arrow_back_ios_outlined,
-                    color: primaryColor,
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  }),
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+        child: Row(
+          children: [
+            ClipOval(
+              child: Material(
+                elevation: 10,
+                color: Colors.grey
+                    .shade200, //To let the Container background be displayed
+                child: IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios_outlined,
+                      color: primaryColor,
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    }),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -155,10 +158,15 @@ class CustomScaffold extends StatelessWidget {
               ],
             ),
             Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomBackButton(),
-                SingleChildScrollView(
-                  child: body,
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: SingleChildScrollView(
+                    child: body,
+                  ),
                 )
               ],
             )
