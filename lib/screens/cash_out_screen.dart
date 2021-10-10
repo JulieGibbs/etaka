@@ -20,10 +20,10 @@ class _CashOutScreenState extends State<CashOutScreen> {
         .width;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Send Money"),
+        title: Text("Cash Out"),
         centerTitle: true,
         actions: [
-          IconButton(onPressed: null, icon: Icon(Icons.account_balance))
+          IconButton(onPressed: null, icon: Icon(Icons.qr_code_scanner))
         ],
       ),
       backgroundColor: Colors.white,
