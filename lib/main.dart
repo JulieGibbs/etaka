@@ -1,7 +1,3 @@
-import 'package:etaka/screens/cash_out_screen.dart';
-import 'package:etaka/screens/login_screen.dart';
-import 'package:etaka/screens/send_money_confirmation.dart';
-import 'package:etaka/screens/send_money_screen.dart';
 import 'package:etaka/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +23,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: CashOutScreen(),
+      home: WelcomeScreen(),
     );
   }
 }

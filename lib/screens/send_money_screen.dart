@@ -1,7 +1,6 @@
+import 'package:etaka/components/constant.dart';
 import 'package:etaka/screens/send_money_confirmation.dart';
 import 'package:flutter/material.dart';
-
-import 'send_money_confirmation.dart';
 
 class SendMoneyScreen extends StatefulWidget {
   const SendMoneyScreen({Key? key}) : super(key: key);
@@ -16,13 +15,6 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Send Money"),
-        centerTitle: true,
-        actions: [
-          IconButton(onPressed: null, icon: Icon(Icons.account_balance))
-        ],
-      ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Stack(
@@ -56,70 +48,72 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                     height: 200,
                   ),
                   Container(
-                    color: Colors.white,
+                    color: Colors.transparent,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(30, 5, 30, 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Phone Number",
-                                style: TextStyle(
-                                    color: Colors.grey.shade600, fontSize: 18),
-                              ),
-                              TextField(
-                                decoration:
-                                    InputDecoration(hintText: "+8801774000000"),
-                              ),
-                            ],
-                          ),
-                        ),
                         SizedBox(
                           height: 20,
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(30, 5, 30, 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Enter Amount",
-                                style: TextStyle(
-                                    color: Colors.grey.shade600, fontSize: 18),
-                              ),
-                              TextField(
-                                decoration: InputDecoration(hintText: "Amount"),
-                              ),
-                            ],
+                          padding: const EdgeInsets.only(
+                              left: 25, right: 25, bottom: 15),
+                          child: Text(
+                            "Send Money",
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
                           ),
+                        ),
+                        SizedBox(
+                          height: 10,
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Text(
-                            "Available Balance: 24,000", textAlign: TextAlign.center,
-                            style: TextStyle(
-
-                                fontSize: 12, color: Colors.black),
+                          padding: const EdgeInsets.only(
+                              left: 25, right: 25, bottom: 15),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                hintText: "017xxxxxxxx",
+                                labelText: "Enter Receiver Number"),
                           ),
                         ),
-
                         SizedBox(
-                          height: 130,
+                          height: 10,
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SendMoneyConfirmation()));
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            height: 80,
-                            child: Image.asset("assets/img/continue_button.png"),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 25,
+                            right: 25,
+                            bottom: 10,
+                          ),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                hintText: "1000", labelText: "Enter Amount"),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 40,
+                        ),
+                        Center(
+                          child: ElevatedButton(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                              child: Text('SEND'),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              elevation: 10,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              primary: primaryColor,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          SendMoneyConfirmation()));
+                            },
                           ),
                         )
                       ],

@@ -1,6 +1,5 @@
+import 'package:etaka/components/constant.dart';
 import 'package:flutter/material.dart';
-
-import 'dashboard_screen.dart';
 
 class SendMoneyConfirmation extends StatefulWidget {
   const SendMoneyConfirmation({Key? key}) : super(key: key);
@@ -15,13 +14,6 @@ class _SendMoneyConfirmationState extends State<SendMoneyConfirmation> {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Send Money"),
-        centerTitle: true,
-        actions: [
-          IconButton(onPressed: null, icon: Icon(Icons.account_balance))
-        ],
-      ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Stack(
@@ -54,57 +46,73 @@ class _SendMoneyConfirmationState extends State<SendMoneyConfirmation> {
                   SizedBox(
                     height: 200,
                   ),
-
                   Container(
                     color: Colors.white,
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         SizedBox(
                           height: 20,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: Text(
-                            "To",
+                            "Send Money",
                             style: TextStyle(
                                 fontSize: 30, fontWeight: FontWeight.bold),
                           ),
                         ),
-                        Container(
-                          width: 340,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 1,
+                        Center(
+                          child: Card(
+                            elevation: 4,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                              child: Text("Number: 01704293600", style: TextStyle(fontSize: 20))
+                            child: Container(
+                              width: 300,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                // border: Border.all(
+                                //   color: Colors.black,
+                                //   width: 1,
+                                // ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Center(
+                                  child: Text("Receiver : 01704293600",
+                                      style: TextStyle(fontSize: 20))),
+                            ),
                           ),
                         ),
                         SizedBox(
                           height: 10,
                         ),
-                        Container(
-                          width: 340,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 1,
+                        Center(
+                          child: Card(
+                            elevation: 4,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                              child: Text("Amount: 5,000     Charge:+10.00     Total: 5,010", style: TextStyle(fontSize: 14))
+                            child: Container(
+                              width: 300,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                // border: Border.all(
+                                //   color: Colors.black,
+                                //   width: 1,
+                                // ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Center(
+                                  child: Text(
+                                      "Amount: 5,000     Charge:+10.00     Total: 5,010",
+                                      style: TextStyle(fontSize: 14))),
+                            ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(30, 5, 30, 5),
+                          padding: const EdgeInsets.fromLTRB(50, 15, 50, 5),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -120,17 +128,28 @@ class _SendMoneyConfirmationState extends State<SendMoneyConfirmation> {
                             ],
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Dashboard()));
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            height: 80,
-                            child: Image.asset("assets/img/submit_button.jpg"),
+                        SizedBox(),
+                        Center(
+                          child: ElevatedButton(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                              child: Text('CONFIRM'),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              elevation: 10,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              primary: primaryColor,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          SendMoneyConfirmation()));
+                            },
                           ),
                         )
                       ],
