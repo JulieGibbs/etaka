@@ -22,7 +22,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Expanded(
-	                child: Container(
+                child: Container(
                   alignment: Alignment.topLeft,
                   height: 300,
                   child: Stack(
@@ -45,7 +45,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               // ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
                 },
                 child: Container(
                   height: 80,
@@ -55,7 +56,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ),
               SizedBox(
                 height: 30,
-              )
+              ),
             ],
           ),
         ],
