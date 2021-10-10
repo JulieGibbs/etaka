@@ -128,7 +128,7 @@ class _SendMoneyConfirmationState extends State<SendMoneyConfirmation> {
                             ],
                           ),
                         ),
-                        SizedBox(),
+                        SizedBox(height: 20,),
                         Center(
                           child: ElevatedButton(
                             child: Padding(
