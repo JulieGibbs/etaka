@@ -1,3 +1,6 @@
+import 'package:etaka/components/constant.dart';
+import 'package:etaka/components/reuseable_widgets.dart';
+import 'package:etaka/screens/send_money_confirmation.dart';
 import 'package:flutter/material.dart';
 
 class CashOutScreen extends StatefulWidget {
@@ -10,53 +13,84 @@ class CashOutScreen extends StatefulWidget {
 class _CashOutScreenState extends State<CashOutScreen> {
   @override
   Widget build(BuildContext context) {
-    double h = MediaQuery
-        .of(context)
-        .size
-        .height;
-    double w = MediaQuery
-        .of(context)
-        .size
-        .width;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Cash Out"),
-        centerTitle: true,
-        actions: [
-          IconButton(onPressed: null, icon: Icon(Icons.qr_code_scanner))
+    return CustomScaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 150,
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(25, 0, 0, 0),
+            child: Text(
+              "Cash Out",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
+            child: TextField(
+              decoration: InputDecoration(
+                  hintText: "017xxxxxxxx", labelText: "Enter Agent Number"),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 25,
+              right: 25,
+              bottom: 10,
+            ),
+            child: TextField(
+              decoration:
+                  InputDecoration(hintText: "1000", labelText: "Enter Amount"),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
+            child: TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                hintText: "******",
+                labelText: "Enter Pin",
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Center(
+            child: ElevatedButton(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                child: Text('CONFIRM'),
+              ),
+              style: ElevatedButton.styleFrom(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                primary: primaryColor,
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SendMoneyConfirmation()));
+              },
+            ),
+          )
         ],
       ),
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Container(
-                height: h,
-                width: w,
-                child: Image.asset("assets/img/bck_r.png")),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Container(
-                  alignment: Alignment.topRight,
-                  width: double.infinity,
-                  height: 300,
-                  child: Stack(
-                    children: [
-                      Image.asset("assets/img/vector_1_r.png"),
-                      Image.asset("assets/img/vector_2_r.png"),
-                    ],
-                  ),
-                )
-              ],
-            ),
-
-          ],
-        ),
-      ),
     );
-
   }
-
-
 }
