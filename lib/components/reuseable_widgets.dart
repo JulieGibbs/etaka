@@ -126,7 +126,9 @@ class CustomBackButton extends StatelessWidget {
 
 class CustomScaffold extends StatelessWidget {
   final Widget body;
-  const CustomScaffold({Key? key, required this.body}) : super(key: key);
+  final bool isRoot;
+  const CustomScaffold({Key? key, required this.body, this.isRoot = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -161,17 +163,61 @@ class CustomScaffold extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomBackButton(),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: SingleChildScrollView(
-                    child: body,
+                if (!isRoot) CustomBackButton(),
+                SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 20, 8, 10),
+                    child: SingleChildScrollView(
+                      child: body,
+                    ),
                   ),
                 )
               ],
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CustomPrimaryButton extends StatelessWidget {
+  final String btnText;
+  // final Color btnColor;
+  final Function onTap;
+  const CustomPrimaryButton(
+      {Key? key, required this.btnText, required this.onTap})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        child: Container(
+          alignment: Alignment.center,
+          height: 50,
+          width: 250,
+          child: Text(btnText,
+              style: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w500,
+              )),
+        ),
+        style: ElevatedButton.styleFrom(
+          elevation: 10,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          primary: primaryColor,
+        ),
+        onPressed: () {
+          onTap.call();
+          // Navigator.push(
+          //     context,
+          //     MaterialPageRoute(
+          //         builder: (context) =>
+          //             SendMoneyConfirmation()));
+        },
       ),
     );
   }
