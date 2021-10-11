@@ -47,40 +47,31 @@ class TransactionSuccessfulState extends State<TransactionSuccessful> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
-            child: TextField(
-              decoration: InputDecoration(
-                  hintText: "017xxxxxxxx", labelText: "Enter Agent Number"),
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 25,
-              right: 25,
-              bottom: 10,
-            ),
-            child: TextField(
-              decoration:
-              InputDecoration(hintText: "1000", labelText: "Enter Amount"),
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
-            child: TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                hintText: "******",
-                labelText: "Enter Pin",
+          Center(
+            child: Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Container(
+                width: 300,
+                height: 300,
+                decoration: BoxDecoration(
+                  // border: Border.all(
+                  //   color: Colors.black,
+                  //   width: 1,
+                  // ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Center(
+                    child: Text('''Receiver : 01704293600
+                                   Amount : 5,010
+                                   Available Balance : 10,000 ''',
+                        style: TextStyle(fontSize: 20))),
               ),
             ),
           ),
+
           SizedBox(
             height: 20,
           ),
@@ -88,7 +79,7 @@ class TransactionSuccessfulState extends State<TransactionSuccessful> {
             child: ElevatedButton(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
-                child: Text('CONFIRM'),
+                child: Text('Go Back To Home'),
               ),
               style: ElevatedButton.styleFrom(
                 elevation: 10,
