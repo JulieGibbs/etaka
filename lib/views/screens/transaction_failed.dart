@@ -1,5 +1,5 @@
-import 'package:etaka/components/constant.dart';
-import 'package:etaka/components/reuseable_widgets.dart';
+import 'package:etaka/views/components/constant.dart';
+import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,6 @@ class TransactionFailedState extends State<TransactionFailed> {
           SizedBox(
             height: 170,
           ),
-
           Container(
             alignment: Alignment.center,
             width: 50,
@@ -29,17 +28,14 @@ class TransactionFailedState extends State<TransactionFailed> {
             child: Stack(
               children: [
                 Image.asset("assets/img/cancel.png"),
-
               ],
             ),
           ),
-
           SizedBox(
             height: 40,
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(25, 0, 0, 0),
-
             child: Text(
               "Transaction Failed",
               style: TextStyle(
@@ -49,10 +45,11 @@ class TransactionFailedState extends State<TransactionFailed> {
             ),
           ),
           Center(
-            child: Text("There is an error.Please try again later",
-            style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500,))
-          ),
-
+              child: Text("There is an error.Please try again later",
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                  ))),
           SizedBox(
             height: 100,
           ),

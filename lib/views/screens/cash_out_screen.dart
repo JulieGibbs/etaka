@@ -1,16 +1,16 @@
-import 'package:etaka/components/constant.dart';
-import 'package:etaka/components/reuseable_widgets.dart';
-import 'package:etaka/screens/mobile_recharge_confirmation.dart';
+import 'package:etaka/views/components/constant.dart';
+import 'package:etaka/views/components/reuseable_widgets.dart';
+import 'package:etaka/views/screens/send_money_confirmation.dart';
 import 'package:flutter/material.dart';
 
-class MobileRechargeScreen extends StatefulWidget {
-  const MobileRechargeScreen({Key? key}) : super(key: key);
+class CashOutScreen extends StatefulWidget {
+  const CashOutScreen({Key? key}) : super(key: key);
 
   @override
-  _MobileRechargeScreenState createState() => _MobileRechargeScreenState();
+  _CashOutScreenState createState() => _CashOutScreenState();
 }
 
-class _MobileRechargeScreenState extends State<MobileRechargeScreen> {
+class _CashOutScreenState extends State<CashOutScreen> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -24,7 +24,7 @@ class _MobileRechargeScreenState extends State<MobileRechargeScreen> {
           Padding(
             padding: const EdgeInsets.fromLTRB(25, 0, 0, 0),
             child: Text(
-              "Mobile Recharge",
+              "Cash Out",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w500,
@@ -35,7 +35,7 @@ class _MobileRechargeScreenState extends State<MobileRechargeScreen> {
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
             child: TextField(
               decoration: InputDecoration(
-                  hintText: "017xxxxxxxx", labelText: "Enter Mobile Number"),
+                  hintText: "017xxxxxxxx", labelText: "Enter Agent Number"),
             ),
           ),
           SizedBox(
@@ -61,7 +61,7 @@ class _MobileRechargeScreenState extends State<MobileRechargeScreen> {
               obscureText: true,
               decoration: InputDecoration(
                 hintText: "******",
-                labelText: "prepaid or Postpaid",
+                labelText: "Enter Pin",
               ),
             ),
           ),
@@ -72,7 +72,7 @@ class _MobileRechargeScreenState extends State<MobileRechargeScreen> {
             child: ElevatedButton(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
-                child: Text('NEXT'),
+                child: Text('CONFIRM'),
               ),
               style: ElevatedButton.styleFrom(
                 elevation: 10,
@@ -85,7 +85,7 @@ class _MobileRechargeScreenState extends State<MobileRechargeScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => MobileRechargeConfirmation()));
+                        builder: (context) => SendMoneyConfirmation()));
               },
             ),
           )

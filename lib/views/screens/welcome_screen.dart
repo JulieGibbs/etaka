@@ -1,5 +1,6 @@
-import 'package:etaka/screens/initial_login_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'initial_login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);

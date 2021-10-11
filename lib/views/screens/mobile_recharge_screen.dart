@@ -1,16 +1,17 @@
-import 'package:etaka/components/constant.dart';
-import 'package:etaka/components/reuseable_widgets.dart';
-import 'package:etaka/screens/send_money_confirmation.dart';
+import 'package:etaka/views/components/constant.dart';
+import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
 
-class CashOutScreen extends StatefulWidget {
-  const CashOutScreen({Key? key}) : super(key: key);
+import 'mobile_recharge_confirmation.dart';
+
+class MobileRechargeScreen extends StatefulWidget {
+  const MobileRechargeScreen({Key? key}) : super(key: key);
 
   @override
-  _CashOutScreenState createState() => _CashOutScreenState();
+  _MobileRechargeScreenState createState() => _MobileRechargeScreenState();
 }
 
-class _CashOutScreenState extends State<CashOutScreen> {
+class _MobileRechargeScreenState extends State<MobileRechargeScreen> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -24,7 +25,7 @@ class _CashOutScreenState extends State<CashOutScreen> {
           Padding(
             padding: const EdgeInsets.fromLTRB(25, 0, 0, 0),
             child: Text(
-              "Cash Out",
+              "Mobile Recharge",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w500,
@@ -35,7 +36,7 @@ class _CashOutScreenState extends State<CashOutScreen> {
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
             child: TextField(
               decoration: InputDecoration(
-                  hintText: "017xxxxxxxx", labelText: "Enter Agent Number"),
+                  hintText: "017xxxxxxxx", labelText: "Enter Mobile Number"),
             ),
           ),
           SizedBox(
@@ -61,7 +62,7 @@ class _CashOutScreenState extends State<CashOutScreen> {
               obscureText: true,
               decoration: InputDecoration(
                 hintText: "******",
-                labelText: "Enter Pin",
+                labelText: "prepaid or Postpaid",
               ),
             ),
           ),
@@ -72,7 +73,7 @@ class _CashOutScreenState extends State<CashOutScreen> {
             child: ElevatedButton(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
-                child: Text('CONFIRM'),
+                child: Text('NEXT'),
               ),
               style: ElevatedButton.styleFrom(
                 elevation: 10,
@@ -85,7 +86,7 @@ class _CashOutScreenState extends State<CashOutScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SendMoneyConfirmation()));
+                        builder: (context) => MobileRechargeConfirmation()));
               },
             ),
           )

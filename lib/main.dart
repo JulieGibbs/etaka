@@ -1,4 +1,4 @@
-import 'package:etaka/screens/welcome_screen.dart';
+import 'package:etaka/views/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

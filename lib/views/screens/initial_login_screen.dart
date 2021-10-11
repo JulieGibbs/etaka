@@ -1,4 +1,4 @@
-import 'package:etaka/components/reuseable_widgets.dart';
+import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
 
 import 'otp_screen.dart';

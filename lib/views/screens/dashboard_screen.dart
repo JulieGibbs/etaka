@@ -1,11 +1,11 @@
-import 'package:etaka/components/constant.dart';
-import 'package:etaka/components/pie_chart.dart';
-import 'package:etaka/components/reuseable_widgets.dart';
-import 'package:etaka/screens/mobile_recharge_screen.dart';
-import 'package:etaka/screens/send_money_screen.dart';
+import 'package:etaka/views/components/constant.dart';
+import 'package:etaka/views/components/pie_chart.dart';
+import 'package:etaka/views/components/reuseable_widgets.dart';
+import 'package:etaka/views/screens/send_money_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'cash_out_screen.dart';
+import 'mobile_recharge_screen.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
