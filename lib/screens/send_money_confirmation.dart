@@ -1,5 +1,6 @@
 import 'package:etaka/components/constant.dart';
 import 'package:etaka/components/reuseable_widgets.dart';
+import 'package:etaka/screens/transaction_successfull.dart';
 import 'package:flutter/material.dart';
 
 class SendMoneyConfirmation extends StatefulWidget {
@@ -145,7 +146,7 @@ class _SendMoneyConfirmationState extends State<SendMoneyConfirmation> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          SendMoneyConfirmation()));
+                                          TransactionSuccessful()));
                             },
                           ),
                         )

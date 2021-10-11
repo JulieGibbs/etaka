@@ -1,6 +1,6 @@
 import 'package:etaka/components/constant.dart';
 import 'package:etaka/components/reuseable_widgets.dart';
-import 'package:etaka/screens/send_money_confirmation.dart';
+import 'package:etaka/screens/dashboard_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -92,7 +92,7 @@ Available Balance : 10,000""",maxLines: 20,
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SendMoneyConfirmation()));
+                        builder: (context) => Dashboard()));
               },
             ),
           )
