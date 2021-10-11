@@ -1,6 +1,7 @@
 import 'package:etaka/components/constant.dart';
 import 'package:etaka/components/pie_chart.dart';
 import 'package:etaka/components/reuseable_widgets.dart';
+import 'package:etaka/screens/mobile_recharge_screen.dart';
 import 'package:etaka/screens/send_money_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -111,7 +112,12 @@ class _DashboardState extends State<Dashboard> {
                 DashBoardMainItemCard(
                   asset: "assets/svg/Recharge.svg",
                   title: "RECHARGE",
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MobileRechargeScreen()));
+                  },
                 ),
                 DashBoardMainItemCard(
                   asset: "assets/svg/Scan.svg",
