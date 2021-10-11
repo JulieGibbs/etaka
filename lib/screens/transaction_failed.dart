@@ -19,7 +19,7 @@ class TransactionFailedState extends State<TransactionFailed> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            height: 150,
+            height: 170,
           ),
 
           Container(
@@ -34,7 +34,9 @@ class TransactionFailedState extends State<TransactionFailed> {
             ),
           ),
 
-
+          SizedBox(
+            height: 40,
+          ),
           Padding(
             padding: const EdgeInsets.fromLTRB(25, 0, 0, 0),
 
@@ -52,7 +54,7 @@ class TransactionFailedState extends State<TransactionFailed> {
           ),
 
           SizedBox(
-            height: 20,
+            height: 100,
           ),
           Center(
             child: ElevatedButton(
