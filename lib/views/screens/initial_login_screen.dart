@@ -1,11 +1,18 @@
+import 'package:etaka/logics/services/API/api_helper.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
 
 import 'otp_screen.dart';
 
-class InitialLogin extends StatelessWidget {
+class InitialLogin extends StatefulWidget {
   const InitialLogin({Key? key}) : super(key: key);
 
+  @override
+  _InitialLoginState createState() => _InitialLoginState();
+}
+
+class _InitialLoginState extends State<InitialLogin> {
+  late String phone_number;
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -42,6 +49,11 @@ class InitialLogin extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextField(
+                        onChanged: (val) {
+                          setState(() {
+                            phone_number = val;
+                          });
+                        },
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
                             hintText: "+8801774000000",
@@ -55,9 +67,15 @@ class InitialLogin extends StatelessWidget {
                 ),
                 CustomPrimaryButton(
                     btnText: "Continue",
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => OTPScreen()));
+                    onTap: () async {
+                      APIService api = APIService();
+                      await api.login(phone_number);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => OTPScreen(
+                                    phone_number: phone_number,
+                                  )));
                     })
               ],
             ),
