@@ -1,6 +1,5 @@
+import 'package:etaka/screens/initial_login_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -46,7 +45,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               GestureDetector(
                 onTap: () {
                   Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                      MaterialPageRoute(builder: (context) => InitialLogin()));
                 },
                 child: Container(
                   height: 80,
