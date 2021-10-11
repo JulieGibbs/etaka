@@ -1,10 +1,15 @@
+import 'package:etaka/logics/services/API/api_helper.dart';
 import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
+import 'package:etaka/views/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
 
+import 'login_screen.dart';
+
 class OTPScreen extends StatefulWidget {
-  const OTPScreen({Key? key}) : super(key: key);
+  final String phone_number;
+  const OTPScreen({Key? key, required this.phone_number}) : super(key: key);
   @override
   _OTPScreenState createState() => _OTPScreenState();
 }
@@ -106,8 +111,24 @@ class _OTPScreenState extends State<OTPScreen> {
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             constraints: const BoxConstraints(maxWidth: 500),
             child: RaisedButton(
-              onPressed: () {
-                // loginStore.validateOtpAndLogin(context, text);
+              onPressed: () async {
+                print(text);
+                APIService api = APIService();
+                // await api.otpcheck(widget.phone_number, text);
+                bool ch = await api.checkAccountExist();
+                if (ch) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                  );
+                } else {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RegistrationScreen(),
+                    ),
+                  );
+                }
               },
               color: primaryColor,
               shape: const RoundedRectangleBorder(
