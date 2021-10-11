@@ -1,6 +1,8 @@
 import 'package:etaka/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
 
+import 'otp_screen.dart';
+
 class InitialLogin extends StatelessWidget {
   const InitialLogin({Key? key}) : super(key: key);
 
@@ -51,7 +53,12 @@ class InitialLogin extends StatelessWidget {
                 SizedBox(
                   height: 60,
                 ),
-                CustomPrimaryButton(btnText: "Continue", onTap: () {})
+                CustomPrimaryButton(
+                    btnText: "Continue",
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => OTPScreen()));
+                    })
               ],
             ),
           ]),
