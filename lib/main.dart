@@ -1,3 +1,4 @@
+import 'package:etaka/screens/transaction_failed.dart';
 import 'package:etaka/screens/transaction_successfull.dart';
 import 'package:etaka/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: TransactionSuccessful(),
+      home: TransactionFailed(),
     );
   }
 }
