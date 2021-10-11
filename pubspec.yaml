@@ -30,6 +30,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^0.22.0
   fl_chart: ^0.40.0
+  otp_screen: ^0.0.3
+  flutter_mobx: ^2.0.2
+  numeric_keyboard: ^1.1.0
+  provider: ^6.0.1
 
 dev_dependencies:
   flutter_test:
