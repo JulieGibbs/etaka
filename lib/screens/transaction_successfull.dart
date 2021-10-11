@@ -20,7 +20,7 @@ class TransactionSuccessfulState extends State<TransactionSuccessful> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 200,
+            height: 150,
           ),
 
           Container(
@@ -55,7 +55,7 @@ class TransactionSuccessfulState extends State<TransactionSuccessful> {
               ),
               child: Container(
                 width: 300,
-                height: 300,
+                height: 250,
                 decoration: BoxDecoration(
                   // border: Border.all(
                   //   color: Colors.black,
@@ -64,9 +64,9 @@ class TransactionSuccessfulState extends State<TransactionSuccessful> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
-                    child: Text('''Receiver : 01704293600
-                                   Amount : 5,010
-                                   Available Balance : 10,000 ''',
+                    child: Text(""" Receiver : 01704293600\n
+         Amount : 5,010\n 
+Available Balance : 10,000""",maxLines: 20,
                         style: TextStyle(fontSize: 20))),
               ),
             ),
