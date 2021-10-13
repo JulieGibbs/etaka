@@ -115,12 +115,12 @@ packages:
     source: sdk
     version: "0.0.0"
   fluttertoast:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: fluttertoast
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.1"
+    version: "8.0.8"
   http:
     dependency: "direct main"
     description:
@@ -180,10 +180,10 @@ packages:
   otp_screen:
     dependency: "direct main"
     description:
-      name: otp_screen
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.3"
+      path: otp_screen
+      relative: true
+    source: path
+    version: "0.0.2"
   path:
     dependency: transitive
     description:

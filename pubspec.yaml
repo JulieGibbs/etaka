@@ -18,11 +18,13 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.13.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  otp_screen:
+    path: ./otp_screen
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -30,12 +32,13 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^0.22.0
   fl_chart: ^0.40.0
-  otp_screen: ^0.0.3
+#  otp_screen: ^0.0.3
   flutter_mobx: ^2.0.2
   numeric_keyboard: ^1.1.0
   provider: ^6.0.1
   http: ^0.13.0
   shared_preferences: ^2.0.4
+  fluttertoast: ^8.0.8
 
 dev_dependencies:
   flutter_test:
