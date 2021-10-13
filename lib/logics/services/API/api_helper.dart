@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:etaka/views/components/toast.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -103,8 +104,14 @@ class APIService {
     } catch (e) {
       print(e);
     }
+    var data = json.decode(response.body);
     print(response.statusCode);
-    print(response.body);
+    print(data);
+    if (response.statusCode != 200) {
+      error_toast("Email or Mobile or NID Already Exist");
+    } else {
+      success_toast("Registration is Successful");
+    }
     return response.statusCode == 200;
   }
 }
