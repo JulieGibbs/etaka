@@ -1,6 +1,9 @@
+import 'package:etaka/logics/services/API/api_helper.dart';
 import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
+
+import 'dashboard_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -10,6 +13,7 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  late String first_name, last_name, email, nid, pin;
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -32,24 +36,29 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               style: TextStyle(fontSize: 20),
             ),
           ),
+          // Padding(
+          //   padding: const EdgeInsets.fromLTRB(30, 5, 30, 5),
+          //   child: Column(
+          //     crossAxisAlignment: CrossAxisAlignment.start,
+          //     children: [
+          //       TextField(
+          //         decoration: InputDecoration(
+          //             hintText: "+8801774000000", labelText: "Phone Number"),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.fromLTRB(30, 5, 30, 5),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextField(
-                  decoration: InputDecoration(
-                      hintText: "+8801774000000", labelText: "Phone Number"),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(30, 5, 30, 5),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextField(
+                  onChanged: (val) {
+                    setState(() {
+                      first_name = val;
+                    });
+                  },
                   decoration: InputDecoration(
                       hintText: "Enter First Name", labelText: "First Name"),
                 ),
@@ -62,6 +71,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextField(
+                  onChanged: (val) {
+                    setState(() {
+                      last_name = val;
+                    });
+                  },
                   decoration: InputDecoration(
                       hintText: "Enter Last Name", labelText: "Last Name"),
                 ),
@@ -74,6 +88,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextField(
+                  onChanged: (val) {
+                    setState(() {
+                      email = val;
+                    });
+                  },
                   decoration: InputDecoration(
                       hintText: "Enter Your Email",
                       labelText: "Email (Optional)"),
@@ -87,6 +106,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextField(
+                  onChanged: (val) {
+                    setState(() {
+                      nid = val;
+                    });
+                  },
                   decoration: InputDecoration(
                       hintText: "Enter Your NID Number", labelText: "NID"),
                 ),
@@ -96,6 +120,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           Padding(
             padding: const EdgeInsets.fromLTRB(30, 5, 30, 5),
             child: TextField(
+              onChanged: (val) {
+                setState(() {
+                  pin = val;
+                });
+              },
               obscureText: true,
               decoration: InputDecoration(
                 hintText: "******",
@@ -135,12 +164,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
                 primary: primaryColor,
               ),
-              onPressed: () {
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (context) =>
-                //             SendMoneyConfirmation()));
+              onPressed: () async {
+                APIService api = APIService();
+                bool ch = await api.customerRegister(
+                    first_name: first_name,
+                    email: email,
+                    last_name: last_name,
+                    pin: pin,
+                    nid: nid);
+                if (ch) {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Dashboard()));
+                }
               },
             ),
           ),
