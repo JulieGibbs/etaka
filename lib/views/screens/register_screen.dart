@@ -175,7 +175,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 if (ch) {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Dashboard()));
-                }
+                } else {}
               },
             ),
           ),
