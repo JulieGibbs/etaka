@@ -54,12 +54,13 @@ class APIService {
       if (response.statusCode == 200) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setBool("valid", true);
+        prefs.setString("phone", "+" + phoneNumber);
       }
     } catch (e) {
       print(e);
     }
     print(response.body);
-    return response.statusCode;
+    return response.statusCode == 200;
   }
 
   Future<dynamic> checkAccountExist() async {
@@ -77,6 +78,11 @@ class APIService {
     }
     print(response.statusCode);
     print(response.body);
+    if (response.statusCode == 200) {
+      prefs.setBool("user_exist", true);
+    } else {
+      prefs.setBool("user_exist", false);
+    }
     return response.statusCode == 200;
   }
 
@@ -112,6 +118,35 @@ class APIService {
     } else {
       success_toast("Registration is Successful");
     }
+    prefs.setBool("user_exist", true);
     return response.statusCode == 200;
+  }
+
+  Future<dynamic> pin_login(String pin) async {
+    String funcURL = 'accounts/details/';
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('token') ?? "";
+    var uri = Uri.parse(endpoint + funcURL);
+    var response;
+    try {
+      response = await http.get(uri, headers: {
+        "Authorization": token,
+      });
+    } catch (e) {
+      print(e);
+    }
+    print(response.statusCode);
+    var data = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      if (data['pin'] == pin) {
+        success_toast("Login Success");
+        return true;
+      }
+      prefs.setBool("user_exist", true);
+    } else {
+      prefs.setBool("user_exist", false);
+    }
+    error_toast("Invalid Pin");
+    return false;
   }
 }
