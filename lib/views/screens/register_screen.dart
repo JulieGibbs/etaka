@@ -3,7 +3,7 @@ import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
 
-import 'dashboard_screen.dart';
+import 'login_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -174,7 +174,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     nid: nid);
                 if (ch) {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Dashboard()));
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
                 } else {}
               },
             ),

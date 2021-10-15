@@ -1,6 +1,7 @@
 import 'package:etaka/logics/services/API/api_helper.dart';
 import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
+import 'package:etaka/views/components/toast.dart';
 import 'package:etaka/views/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
@@ -114,20 +115,24 @@ class _OTPScreenState extends State<OTPScreen> {
               onPressed: () async {
                 print(text);
                 APIService api = APIService();
-                // await api.otpcheck(widget.phone_number, text);
-                bool ch = await api.checkAccountExist();
-                if (ch) {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()),
-                  );
+                bool correct = await api.otpcheck(widget.phone_number, text);
+                if (correct) {
+                  bool ch = await api.checkAccountExist();
+                  if (ch) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                    );
+                  } else {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RegistrationScreen(),
+                      ),
+                    );
+                  }
                 } else {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => RegistrationScreen(),
-                    ),
-                  );
+                  error_toast("Invalid OTP");
                 }
               },
               color: primaryColor,
