@@ -25,8 +25,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             children: const <Widget>[
-              Card(child: ListTile(title: Text("Settings",
-                  style: TextStyle(fontWeight: FontWeight.bold)))),
+              Card(
+                  child: ListTile(
+                      title: Text("Settings",
+                          style: TextStyle(fontWeight: FontWeight.bold)))),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.password),
@@ -48,8 +50,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
-              Card(child: ListTile(title: Text("Etaka Support",
-                  style: TextStyle(fontWeight: FontWeight.bold)))),
+              Card(
+                  child: ListTile(
+                      title: Text("Etaka Support",
+                          style: TextStyle(fontWeight: FontWeight.bold)))),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.support_agent),
@@ -64,8 +68,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
-              Card(child: ListTile(title: Text("Account Services",
-                  style: TextStyle(fontWeight: FontWeight.bold)))),
+              Card(
+                  child: ListTile(
+                      title: Text("Account Services",
+                          style: TextStyle(fontWeight: FontWeight.bold)))),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.info),
@@ -73,8 +79,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
-              Card(child: ListTile(title: Text("Policies",
-                  style: TextStyle(fontWeight: FontWeight.bold)))),
+              Card(
+                  child: ListTile(
+                      title: Text("Policies",
+                          style: TextStyle(fontWeight: FontWeight.bold)))),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.message),
@@ -89,6 +97,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
+              Card(
+                  child: ListTile(
+                      leading: Icon(Icons.logout),
+                      title: Text("Log Out",
+                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)))),
             ],
           )
         ],
