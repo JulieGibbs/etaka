@@ -26,24 +26,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             children: const <Widget>[
-              Card(child: ListTile(title: Text('One-line ListTile'))),
+              Card(child: ListTile(title: Text('Settings'))),
+
               Card(
                 child: ListTile(
-                  leading: FlutterLogo(),
-                  title: Text('One-line with leading widget'),
+                  leading: Icon(Icons.password),
+                  title: Text('Change PIN'),
+                  trailing: Icon(Icons.arrow_forward),
                 ),
               ),
               Card(
                 child: ListTile(
-                  title: Text('One-line with trailing widget'),
-                  trailing: Icon(Icons.more_vert),
+                  leading: Icon(Icons.language),
+                  title: Text('Change Language'),
+                  trailing: Icon(Icons.arrow_forward),
                 ),
               ),
               Card(
                 child: ListTile(
-                  leading: FlutterLogo(),
-                  title: Text('One-line with both widgets'),
-                  trailing: Icon(Icons.more_vert),
+                  leading: Icon(Icons.perm_data_setting),
+                  title: Text('Change Permissions'),
+                  trailing: Icon(Icons.arrow_forward),
                 ),
               ),
               Card(
