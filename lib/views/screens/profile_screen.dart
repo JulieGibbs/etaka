@@ -21,6 +21,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
           SizedBox(
             height: 200,
           ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Text(
+              "My Account",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+            ),
+          ),
+          Center(
+            child: Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Container(
+                width: 500,
+                height: 70,
+                decoration: BoxDecoration(
+                  // border: Border.all(
+                  //   color: Colors.black,
+                  //   width: 1,
+                  // ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                    child: Text("""   Adib Mahamud Khan                  Balance\n
+   01704293600                                  500 """,
+                        style: TextStyle(fontSize: 18))
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 40,
+          ),
           ListView(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
