@@ -149,4 +149,30 @@ class APIService {
     error_toast("Invalid Pin");
     return false;
   }
+
+  Future<dynamic> getProfileData(String pin) async {
+    String funcURL = 'accounts/details/';
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('token') ?? "";
+    var uri = Uri.parse(endpoint + funcURL);
+    var response;
+    try {
+      response = await http.get(uri, headers: {
+        "Authorization": token,
+      });
+    } catch (e) {
+      print(e);
+    }
+    print(response.statusCode);
+    var data = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      return data;
+    } else {
+      prefs.setBool("user_exist", false);
+    }
+    error_toast(
+      "Profile not found",
+    );
+    return null;
+  }
 }
