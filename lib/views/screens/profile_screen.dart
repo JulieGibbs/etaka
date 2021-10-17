@@ -49,29 +49,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
+              Card(child: ListTile(title: Text('Etaka Support'))),
               Card(
                 child: ListTile(
-                  title: Text('One-line dense ListTile'),
-                  dense: true,
+                  leading: Icon(Icons.support_agent),
+                  title: Text('24x7 Support'),
+                  trailing: Icon(Icons.arrow_forward),
                 ),
               ),
               Card(
                 child: ListTile(
-                  leading: FlutterLogo(size: 56.0),
-                  title: Text('Two-line ListTile'),
-                  subtitle: Text('Here is a second line'),
-                  trailing: Icon(Icons.more_vert),
-                ),
-              ),
-              Card(
-                child: ListTile(
-                  leading: FlutterLogo(size: 72.0),
-                  title: Text('Three-line ListTile'),
-                  subtitle: Text(
-                      'A sufficiently long subtitle warrants three lines.'
-                  ),
-                  trailing: Icon(Icons.more_vert),
-                  isThreeLine: true,
+                  leading: Icon(Icons.support),
+                  title: Text('FAQ'),
+                  trailing: Icon(Icons.arrow_forward),
                 ),
               ),
             ],
