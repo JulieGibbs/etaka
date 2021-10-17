@@ -1,3 +1,4 @@
+import 'package:etaka/views/screens/profile_screen.dart';
 import 'package:etaka/views/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: WelcomeScreen(),
+      home: ProfileScreen(),
     );
   }
 }
