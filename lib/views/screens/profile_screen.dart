@@ -18,16 +18,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-        SizedBox(
-        height: 200,
-
-      ),
+          SizedBox(
+            height: 200,
+          ),
           ListView(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             children: const <Widget>[
-              Card(child: ListTile(title: Text('Settings'))),
-
+              Card(child: ListTile(title: Text("Settings",
+                  style: TextStyle(fontWeight: FontWeight.bold)))),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.password),
@@ -49,7 +48,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
-              Card(child: ListTile(title: Text('Etaka Support'))),
+              Card(child: ListTile(title: Text("Etaka Support",
+                  style: TextStyle(fontWeight: FontWeight.bold)))),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.support_agent),
@@ -64,11 +64,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
+              Card(child: ListTile(title: Text("Account Services",
+                  style: TextStyle(fontWeight: FontWeight.bold)))),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.info),
+                  title: Text('Update MNP Info'),
+                  trailing: Icon(Icons.arrow_forward),
+                ),
+              ),
+              Card(child: ListTile(title: Text("Policies",
+                  style: TextStyle(fontWeight: FontWeight.bold)))),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.message),
+                  title: Text('Terms Of Use'),
+                  trailing: Icon(Icons.arrow_forward),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.privacy_tip),
+                  title: Text('Privacy Policy'),
+                  trailing: Icon(Icons.arrow_forward),
+                ),
+              ),
             ],
           )
-      ],
-    ),
-
+        ],
+      ),
     );
   }
 }
