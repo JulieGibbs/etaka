@@ -71,7 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Card(
                   child: ListTile(
                       title: Text("Settings",
-                          style: TextStyle(fontWeight: FontWeight.bold)))),
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)))),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.password),
@@ -94,8 +94,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
 
-              Text("Etaka Support",
-                  style: TextStyle(fontWeight: FontWeight.bold),),
+              Text("etaka Support",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.support_agent),
