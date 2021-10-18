@@ -6,6 +6,7 @@ import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:etaka/views/screens/send_money_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'add _money.dart';
 import 'cash_out_screen.dart';
 import 'mobile_recharge_screen.dart';
 
@@ -18,6 +19,7 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   late Profile profile;
+  bool isLoading = true;
   @override
   void initState() {
     // TODO: implement initState
@@ -29,7 +31,9 @@ class _DashboardState extends State<Dashboard> {
     APIService api = APIService();
     var data = await api.getProfileData();
     profile = Profile.fromJson(data);
-    setState(() {});
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -45,25 +49,27 @@ class _DashboardState extends State<Dashboard> {
             children: [
               SafeArea(
                 child: Row(children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("BDT ${profile.balance.toString()}",
-                            style: TextStyle(
-                                fontSize: 26,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)),
-                        Text("active balance".toUpperCase(),
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.white.withOpacity(0.6))),
-                      ],
-                    ),
-                  ),
+                  isLoading
+                      ? loading
+                      : Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("BDT ${profile.balance.toStringAsFixed(2)}",
+                                  style: TextStyle(
+                                      fontSize: 26,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold)),
+                              Text("active balance".toUpperCase(),
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.white.withOpacity(0.6))),
+                            ],
+                          ),
+                        ),
                   ElevatedButton(
                     child: Text(' + Add Money',
                         style: TextStyle(
@@ -73,8 +79,15 @@ class _DashboardState extends State<Dashboard> {
                           borderRadius: BorderRadius.circular(20)),
                       primary: Colors.white,
                     ),
-                    onPressed: () {
-                      print('Pressed');
+                    onPressed: () async {
+                      var c = await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddMoneyScreen(
+                                    profile: profile,
+                                  )));
+                      await getdata();
+                      setState(() {});
                     },
                   ),
                   Spacer(),

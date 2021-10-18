@@ -24,13 +24,16 @@ class APIService {
       if (response.statusCode == 200) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString("token", data['session_token']);
+      } else {
+        error_toast("Connection error");
+        return false;
       }
-      print(data['session_token']);
+      // print(data['session_token']);
     } catch (e) {
       print(e);
     }
     print(response.body);
-    return response.statusCode;
+    return response.statusCode == 200;
   }
 
   Future<dynamic> otpcheck(String phoneNumber, String otp) async {
@@ -200,6 +203,45 @@ class APIService {
     }
     print(response.statusCode);
     // var data = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      // prefs.setBool("user_exist", false);
+    }
+    error_toast(
+      "Profile not found",
+    );
+    return false;
+  }
+
+  Future<dynamic> AddMoney(String cardNo, String card_holder_name,
+      String issuer_bank, double amount) async {
+    print(amount);
+    String funcURL = 'transaction/addmoney/';
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('token') ?? "";
+    var uri = Uri.parse(endpoint + funcURL);
+    var response;
+    try {
+      var data = {
+        "card_no": cardNo,
+        "card_holder_name": card_holder_name,
+        "issuer_bank": issuer_bank,
+        "amount": amount,
+      };
+      var json = jsonEncode(data);
+      response = await http.post(uri,
+          headers: {
+            "Content-type": "application/json",
+            "Authorization": token,
+          },
+          body: json);
+    } catch (e) {
+      print(e);
+    }
+    print(response.statusCode);
+    var data = jsonDecode(response.body);
+    print(data);
     if (response.statusCode == 200) {
       return true;
     } else {
