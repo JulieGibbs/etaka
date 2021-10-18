@@ -1,3 +1,4 @@
+import 'package:etaka/logics/models/profile.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  late Profile profile;
+
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -32,32 +35,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Container(
-                  width: 500,
-
-                  decoration: BoxDecoration(
-                    // border: Border.all(
-                    //   color: Colors.black,
-                    //   width: 1,
-                    // ),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundImage: NetworkImage('https://www.pngitem.com/pimgs/m/421-4213036_avatar-hd-png-download.png'),
+                width: 500,
+                decoration: BoxDecoration(
+                  // border: Border.all(
+                  //   color: Colors.black,
+                  //   width: 1,
+                  // ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: CircleAvatar(
+                        radius: 35,
+                        backgroundImage: NetworkImage(
+                            'https://www.pngitem.com/pimgs/m/421-4213036_avatar-hd-png-download.png'),
                       ),
-                      Column(
-                        children: [
-
-                          Text("Name ",
-                              style: TextStyle(fontSize: 24)),
-                          Text("Mobile Number",
-                              style: TextStyle(fontSize: 18)),
-                        ],
-                      )
-                    ],
-                  ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Name ", style: TextStyle(fontSize: 24)),
+                        Text("Mobile Number", style: TextStyle(fontSize: 18)),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
@@ -71,7 +75,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Card(
                   child: ListTile(
                       title: Text("Settings",
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)))),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18)))),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.password),
@@ -81,7 +86,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.language, color: Colors.tealAccent,),
+                  leading: Icon(
+                    Icons.language,
+                    color: Colors.tealAccent,
+                  ),
                   title: Text('Change Language'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
@@ -93,9 +101,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
-
-              Text("etaka Support",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+              Text(
+                "etaka Support",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.support_agent),
