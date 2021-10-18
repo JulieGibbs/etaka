@@ -175,4 +175,39 @@ class APIService {
     );
     return null;
   }
+
+  Future<dynamic> SendMoney(String receiver, double amount) async {
+    print(amount);
+    String funcURL = 'transaction/sendmoney/';
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('token') ?? "";
+    var uri = Uri.parse(endpoint + funcURL);
+    var response;
+    try {
+      var data = {
+        "receiver": "+" + receiver,
+        "amount": amount,
+      };
+      var json = jsonEncode(data);
+      response = await http.post(uri,
+          headers: {
+            "Content-type": "application/json",
+            "Authorization": token,
+          },
+          body: json);
+    } catch (e) {
+      print(e);
+    }
+    print(response.statusCode);
+    // var data = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      // prefs.setBool("user_exist", false);
+    }
+    error_toast(
+      "Profile not found",
+    );
+    return false;
+  }
 }
