@@ -150,7 +150,7 @@ class APIService {
     return false;
   }
 
-  Future<dynamic> getProfileData(String pin) async {
+  Future<dynamic> getProfileData() async {
     String funcURL = 'accounts/details/';
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String token = prefs.getString('token') ?? "";
