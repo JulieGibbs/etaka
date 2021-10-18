@@ -1,8 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
     package="com.soad.etaka.etaka">
    <application
         android:label="etaka"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        tools:replace="android:label"
+        android:usesCleartextTraffic="true" >
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
