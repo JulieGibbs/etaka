@@ -114,7 +114,7 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
       error_toast("Insufficient funds");
       return;
     } else {
-      Navigator.push(
+      Navigator.pushReplacement(
           context,
           MaterialPageRoute(
               builder: (context) =>

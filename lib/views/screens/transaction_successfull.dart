@@ -3,8 +3,6 @@ import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'dashboard_screen.dart';
-
 class TransactionSuccessful extends StatefulWidget {
   const TransactionSuccessful({Key? key}) : super(key: key);
 
@@ -78,8 +76,7 @@ Available Balance : 10,000""", maxLines: 20, style: TextStyle(fontSize: 20))),
                 primary: primaryColor,
               ),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Dashboard()));
+                Navigator.pop(context);
               },
             ),
           )
