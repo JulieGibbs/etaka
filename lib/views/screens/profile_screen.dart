@@ -1,4 +1,3 @@
-import 'package:etaka/logics/models/profile.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -10,8 +9,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  late Profile profile;
-
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -35,33 +32,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Container(
-                width: 500,
-                decoration: BoxDecoration(
-                  // border: Border.all(
-                  //   color: Colors.black,
-                  //   width: 1,
-                  // ),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: CircleAvatar(
-                        radius: 35,
-                        backgroundImage: NetworkImage(
-                            'https://www.pngitem.com/pimgs/m/421-4213036_avatar-hd-png-download.png'),
+                  width: 500,
+
+                  decoration: BoxDecoration(
+                    // border: Border.all(
+                    //   color: Colors.black,
+                    //   width: 1,
+                    // ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundImage: NetworkImage('https://www.pngitem.com/pimgs/m/421-4213036_avatar-hd-png-download.png'),
                       ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Name ", style: TextStyle(fontSize: 24)),
-                        Text("Mobile Number", style: TextStyle(fontSize: 18)),
-                      ],
-                    )
-                  ],
-                ),
+                      Column(
+                        children: [
+
+                          Text("Name ",
+                              style: TextStyle(fontSize: 24)),
+                          Text("Mobile Number",
+                              style: TextStyle(fontSize: 18)),
+                        ],
+                      )
+                    ],
+                  ),
               ),
             ),
           ),
@@ -72,39 +68,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             children: const <Widget>[
-              Card(
-                  child: ListTile(
-                      title: Text("Settings",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18)))),
+
+
+                  Text("Settings",
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.password),
+                  leading: Icon(Icons.password, color: Colors.pink,),
                   title: Text('Change PIN'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(
-                    Icons.language,
-                    color: Colors.tealAccent,
-                  ),
+                  leading: Icon(Icons.language, color: Colors.purple,),
                   title: Text('Change Language'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.perm_data_setting),
+                  leading: Icon(Icons.perm_data_setting, color: Colors.amber,),
                   title: Text('Change Permissions'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
-              Text(
-                "etaka Support",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
+
+              Text("etaka Support",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.support_agent),
