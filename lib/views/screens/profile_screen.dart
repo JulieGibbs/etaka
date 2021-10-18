@@ -33,7 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               child: Container(
                   width: 500,
-                  height: 70,
+
                   decoration: BoxDecoration(
                     // border: Border.all(
                     //   color: Colors.black,
@@ -41,9 +41,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     // ),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Text("""   Adib Mahamud Khan                  Balance\n
-   01704293600                                  500 """,
-                      style: TextStyle(fontSize: 18))),
+
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundImage: NetworkImage('https://www.pngitem.com/pimgs/m/421-4213036_avatar-hd-png-download.png'),
+                      ),
+                      Column(
+                        children: [
+
+                          Text("Name ",
+                              style: TextStyle(fontSize: 24)),
+                          Text("Mobile Number",
+                              style: TextStyle(fontSize: 18)),
+                        ],
+                      )
+                    ],
+                  ),
+              ),
             ),
           ),
           SizedBox(
@@ -66,7 +81,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.language),
+                  leading: Icon(Icons.language, color: Colors.tealAccent,),
                   title: Text('Change Language'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
@@ -78,10 +93,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
-              Card(
-                  child: ListTile(
-                      title: Text("Etaka Support",
-                          style: TextStyle(fontWeight: FontWeight.bold)))),
+
+              Text("Etaka Support",
+                  style: TextStyle(fontWeight: FontWeight.bold),),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.support_agent),
