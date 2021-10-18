@@ -18,9 +18,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 200,
-          ),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
@@ -35,19 +32,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Container(
-                width: 500,
-                height: 70,
-                decoration: BoxDecoration(
-                  // border: Border.all(
-                  //   color: Colors.black,
-                  //   width: 1,
-                  // ),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                    child: Text("""   Adib Mahamud Khan                  Balance\n
+                  width: 500,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    // border: Border.all(
+                    //   color: Colors.black,
+                    //   width: 1,
+                    // ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text("""   Adib Mahamud Khan                  Balance\n
    01704293600                                  500 """,
-                        style: TextStyle(fontSize: 18))
-              ),
+                      style: TextStyle(fontSize: 18))),
             ),
           ),
           SizedBox(
@@ -133,7 +129,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: ListTile(
                       leading: Icon(Icons.logout),
                       title: Text("Log Out",
-                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)))),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.red)))),
             ],
           )
         ],

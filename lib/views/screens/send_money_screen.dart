@@ -1,16 +1,20 @@
+import 'package:etaka/logics/models/profile.dart';
 import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
-import 'package:etaka/views/screens/send_money_confirmation.dart';
+import 'package:etaka/views/components/toast.dart';
 import 'package:flutter/material.dart';
 
 class SendMoneyScreen extends StatefulWidget {
-  const SendMoneyScreen({Key? key}) : super(key: key);
+  final Profile profile;
+  const SendMoneyScreen({Key? key, required this.profile}) : super(key: key);
 
   @override
   _SendMoneyScreenState createState() => _SendMoneyScreenState();
 }
 
 class _SendMoneyScreenState extends State<SendMoneyScreen> {
+  late String receiver;
+  late double amount;
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -35,6 +39,11 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
             child: TextField(
+              onChanged: (val) {
+                setState(() {
+                  receiver = val;
+                });
+              },
               decoration: InputDecoration(
                   hintText: "017xxxxxxxx", labelText: "Enter Receiver Number"),
             ),
@@ -49,8 +58,23 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
               bottom: 10,
             ),
             child: TextField(
+              onChanged: (val) {
+                setState(() {
+                  amount = double.parse(val);
+                });
+              },
               decoration:
                   InputDecoration(hintText: "1000", labelText: "Enter Amount"),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(25, 5, 5, 5),
+            child: Text(
+              "Available Balance: ${widget.profile.balance.toStringAsFixed(2)}",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+              ),
             ),
           ),
           SizedBox(
@@ -70,15 +94,22 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                 primary: primaryColor,
               ),
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SendMoneyConfirmation()));
+                SendMoney();
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => SendMoneyConfirmation()));
               },
             ),
           )
         ],
       ),
     );
+  }
+
+  void SendMoney() {
+    if (widget.profile.balance < amount) {
+      error_toast("Insufficient funds");
+    }
   }
 }

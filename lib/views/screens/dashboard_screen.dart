@@ -1,3 +1,5 @@
+import 'package:etaka/logics/models/profile.dart';
+import 'package:etaka/logics/services/API/api_helper.dart';
 import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/pie_chart.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
@@ -15,6 +17,21 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  late Profile profile;
+  @override
+  void initState() {
+    // TODO: implement initState
+    getdata();
+    super.initState();
+  }
+
+  Future<void> getdata() async {
+    APIService api = APIService();
+    var data = await api.getProfileData();
+    profile = Profile.fromJson(data);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +52,7 @@ class _DashboardState extends State<Dashboard> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("BDT 24,000",
+                        Text("BDT ${profile.balance.toString()}",
                             style: TextStyle(
                                 fontSize: 26,
                                 color: Colors.white,
@@ -96,7 +113,9 @@ class _DashboardState extends State<Dashboard> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SendMoneyScreen()));
+                            builder: (context) => SendMoneyScreen(
+                                  profile: profile,
+                                )));
                   },
                 ),
                 DashBoardMainItemCard(
