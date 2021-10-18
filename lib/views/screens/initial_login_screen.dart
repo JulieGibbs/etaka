@@ -69,13 +69,15 @@ class _InitialLoginState extends State<InitialLogin> {
                     btnText: "Continue",
                     onTap: () async {
                       APIService api = APIService();
-                      await api.login(phone_number);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => OTPScreen(
-                                    phone_number: phone_number,
-                                  )));
+                      bool ch = await api.login(phone_number);
+                      if (ch) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => OTPScreen(
+                                      phone_number: phone_number,
+                                    )));
+                      }
                     })
               ],
             ),
