@@ -68,27 +68,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             children: const <Widget>[
-              Card(
-                  child: ListTile(
-                      title: Text("Settings",
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)))),
+
+
+                  Text("Settings",
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.password),
+                  leading: Icon(Icons.password, color: Colors.pink,),
                   title: Text('Change PIN'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.language, color: Colors.tealAccent,),
+                  leading: Icon(Icons.language, color: Colors.purple,),
                   title: Text('Change Language'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.perm_data_setting),
+                  leading: Icon(Icons.perm_data_setting, color: Colors.amber,),
                   title: Text('Change Permissions'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
