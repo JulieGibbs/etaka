@@ -11,6 +11,7 @@ String profileToJson(Profile data) => json.encode(data.toJson());
 class Profile {
   Profile({
     required this.id,
+    required this.balance,
     required this.firstName,
     required this.lastName,
     required this.mobile,
@@ -20,6 +21,7 @@ class Profile {
   });
 
   int id;
+  double balance;
   String firstName;
   String lastName;
   String mobile;
@@ -29,6 +31,7 @@ class Profile {
 
   factory Profile.fromJson(Map<String, dynamic> json) => Profile(
         id: json["id"],
+        balance: json["balance"],
         firstName: json["first_name"],
         lastName: json["last_name"],
         mobile: json["mobile"],
@@ -39,6 +42,7 @@ class Profile {
 
   Map<String, dynamic> toJson() => {
         "id": id,
+        "balance": balance,
         "first_name": firstName,
         "last_name": lastName,
         "mobile": mobile,
