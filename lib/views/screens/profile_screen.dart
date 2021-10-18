@@ -14,6 +14,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return CustomScaffold(
+      isRoot: true,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,32 +33,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Container(
-                  width: 500,
-
-                  decoration: BoxDecoration(
-                    // border: Border.all(
-                    //   color: Colors.black,
-                    //   width: 1,
-                    // ),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundImage: NetworkImage('https://www.pngitem.com/pimgs/m/421-4213036_avatar-hd-png-download.png'),
+                width: 500,
+                decoration: BoxDecoration(
+                  // border: Border.all(
+                  //   color: Colors.black,
+                  //   width: 1,
+                  // ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: CircleAvatar(
+                        radius: 35,
+                        backgroundImage: NetworkImage(
+                            'https://www.pngitem.com/pimgs/m/421-4213036_avatar-hd-png-download.png'),
                       ),
-                      Column(
-                        children: [
-
-                          Text("Name ",
-                              style: TextStyle(fontSize: 24)),
-                          Text("Mobile Number",
-                              style: TextStyle(fontSize: 18)),
-                        ],
-                      )
-                    ],
-                  ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Name ", style: TextStyle(fontSize: 24)),
+                        Text("Mobile Number", style: TextStyle(fontSize: 18)),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
@@ -68,35 +70,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             children: const <Widget>[
-
-
-                  Text("Settings",
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
-
+              Text(
+                "Settings",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.password, color: Colors.pink,),
+                  leading: Icon(
+                    Icons.password,
+                    color: Colors.pink,
+                  ),
                   title: Text('Change PIN'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.language, color: Colors.purple,),
+                  leading: Icon(
+                    Icons.language,
+                    color: Colors.purple,
+                  ),
                   title: Text('Change Language'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.perm_data_setting, color: Colors.amber,),
+                  leading: Icon(
+                    Icons.perm_data_setting,
+                    color: Colors.amber,
+                  ),
                   title: Text('Change Permissions'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
-
-              Text("etaka Support",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+              Text(
+                "etaka Support",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.support_agent),
