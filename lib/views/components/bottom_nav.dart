@@ -1,4 +1,5 @@
 import 'package:etaka/views/screens/dashboard_screen.dart';
+import 'package:etaka/views/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
@@ -23,7 +24,12 @@ class _DashboardMainState extends State<DashboardMain> {
   }
 
   List<Widget> _buildScreens() {
-    return [Dashboard(), Dashboard(), Dashboard(), Dashboard()];
+    return [
+      Dashboard(),
+      Dashboard(),
+      Dashboard(),
+      ProfileScreen(),
+    ];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
