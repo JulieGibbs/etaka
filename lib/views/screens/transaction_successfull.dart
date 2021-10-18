@@ -23,18 +23,14 @@ class TransactionSuccessfulState extends State<TransactionSuccessful> {
           SizedBox(
             height: 150,
           ),
-          Container(
-            alignment: Alignment.bottomCenter,
-            width: 50,
-            height: 50,
-            child: Stack(
-              children: [
-                Image.asset("assets/img/checked.png"),
-              ],
+          Center(
+            child: Container(
+              width: 50,
+              height: 50,
+              child: Image.asset("assets/img/checked.png"),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(25, 0, 0, 0),
+          Center(
             child: Text(
               "Transaction Successful!",
               style: TextStyle(

@@ -1,16 +1,23 @@
+import 'package:etaka/logics/services/API/api_helper.dart';
 import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
+import 'package:etaka/views/components/toast.dart';
 import 'package:etaka/views/screens/transaction_successfull.dart';
 import 'package:flutter/material.dart';
 
 class SendMoneyConfirmation extends StatefulWidget {
-  const SendMoneyConfirmation({Key? key}) : super(key: key);
+  final String receiver;
+  final double amount;
+  const SendMoneyConfirmation(
+      {Key? key, required this.receiver, required this.amount})
+      : super(key: key);
 
   @override
   _SendMoneyConfirmationState createState() => _SendMoneyConfirmationState();
 }
 
 class _SendMoneyConfirmationState extends State<SendMoneyConfirmation> {
+  double charge = 5;
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -47,7 +54,7 @@ class _SendMoneyConfirmationState extends State<SendMoneyConfirmation> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Center(
-                  child: Text("Receiver : 01704293600",
+                  child: Text("Receiver : ${widget.receiver}",
                       style: TextStyle(fontSize: 20))),
             ),
           ),
@@ -73,7 +80,7 @@ class _SendMoneyConfirmationState extends State<SendMoneyConfirmation> {
               ),
               child: Center(
                   child: Text(
-                      "Amount: 5,000     Charge:+10.00     Total: 5,010",
+                      "Amount: ${widget.amount.toStringAsFixed(2)}    Charge:+${charge.toStringAsFixed(2)}     Total: ${(widget.amount + charge).toStringAsFixed(2)}",
                       style: TextStyle(fontSize: 14))),
             ),
           ),
@@ -104,15 +111,27 @@ class _SendMoneyConfirmationState extends State<SendMoneyConfirmation> {
               ),
               primary: primaryColor,
             ),
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => TransactionSuccessful()));
+            onPressed: () async {
+              await sendmoney();
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //         builder: (context) => TransactionSuccessful()));
             },
           ),
         )
       ],
     ));
+  }
+
+  Future<void> sendmoney() async {
+    APIService api = APIService();
+    bool ch = await api.SendMoney(widget.receiver, widget.amount + charge);
+    if (ch) {
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => TransactionSuccessful()));
+    } else {
+      error_toast("Transaction Failed");
+    }
   }
 }

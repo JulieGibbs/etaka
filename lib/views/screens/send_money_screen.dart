@@ -2,6 +2,7 @@ import 'package:etaka/logics/models/profile.dart';
 import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:etaka/views/components/toast.dart';
+import 'package:etaka/views/screens/send_money_confirmation.dart';
 import 'package:flutter/material.dart';
 
 class SendMoneyScreen extends StatefulWidget {
@@ -45,7 +46,8 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                 });
               },
               decoration: InputDecoration(
-                  hintText: "017xxxxxxxx", labelText: "Enter Receiver Number"),
+                  hintText: "88017xxxxxxxx",
+                  labelText: "Enter Receiver Number"),
             ),
           ),
           SizedBox(
@@ -110,6 +112,13 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
   void SendMoney() {
     if (widget.profile.balance < amount) {
       error_toast("Insufficient funds");
+      return;
+    } else {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  SendMoneyConfirmation(receiver: receiver, amount: amount)));
     }
   }
 }
