@@ -99,22 +99,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.support_agent),
+                  leading: Icon(Icons.support_agent, color: Colors.lightBlue,),
                   title: Text('24x7 Support'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.support),
+                  leading: Icon(Icons.support, color: Colors.red,),
                   title: Text('FAQ'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
-              Card(
-                  child: ListTile(
-                      title: Text("Account Services",
-                          style: TextStyle(fontWeight: FontWeight.bold)))),
+
+              Text("Account Services",
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
               Card(
                 child: ListTile(
                   leading: Icon(Icons.info),
