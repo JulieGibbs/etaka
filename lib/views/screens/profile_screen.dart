@@ -110,50 +110,51 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.support_agent),
+                  leading: Icon(Icons.support_agent, color: Colors.lightBlue,),
                   title: Text('24x7 Support'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.support),
+                  leading: Icon(Icons.support, color: Colors.red,),
                   title: Text('FAQ'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
-              Card(
-                  child: ListTile(
-                      title: Text("Account Services",
-                          style: TextStyle(fontWeight: FontWeight.bold)))),
+
+              Text("Account Services",
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.info),
+                  leading: Icon(Icons.info, color: Colors.cyan,),
                   title: Text('Update MNP Info'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
-              Card(
-                  child: ListTile(
-                      title: Text("Policies",
-                          style: TextStyle(fontWeight: FontWeight.bold)))),
+
+               Text("Terms & Policies",
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.message),
+                  leading: Icon(Icons.message, color: Colors.deepPurpleAccent,),
                   title: Text('Terms Of Use'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.privacy_tip),
+                  leading: Icon(Icons.privacy_tip, color: Colors.green,),
                   title: Text('Privacy Policy'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
+              SizedBox(
+                height: 40,
+              ),
               Card(
                   child: ListTile(
-                      leading: Icon(Icons.logout),
+                      leading: Icon(Icons.logout, color: Colors.red,),
                       title: Text("Log Out",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
