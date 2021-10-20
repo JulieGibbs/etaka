@@ -128,8 +128,13 @@ class _SendMoneyConfirmationState extends State<SendMoneyConfirmation> {
     APIService api = APIService();
     bool ch = await api.SendMoney(widget.receiver, widget.amount + charge);
     if (ch) {
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => TransactionSuccessful()));
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => TransactionSuccessful(
+                    receiver: widget.receiver,
+                    amount: widget.amount + charge,
+                  )));
     } else {
       error_toast("Transaction Failed");
     }
