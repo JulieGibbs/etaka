@@ -37,4 +37,88 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
           SizedBox(
             height: 10,
           ),
-          
+          Padding(
+            padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
+            child: TextField(
+              onChanged: (val) {
+                setState(() {
+                  receiver = val;
+                });
+              },
+              decoration: InputDecoration(
+                  hintText: "88017xxxxxxxx",
+                  labelText: "Enter Receiver Number"),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 25,
+              right: 25,
+              bottom: 10,
+            ),
+            child: TextField(
+              onChanged: (val) {
+                setState(() {
+                  amount = double.parse(val);
+                });
+              },
+              decoration:
+                  InputDecoration(hintText: "1000", labelText: "Enter Amount"),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(25, 5, 5, 5),
+            child: Text(
+              "Available Balance: ${widget.profile.balance.toStringAsFixed(2)}",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 40,
+          ),
+          Center(
+            child: ElevatedButton(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                child: Text('SEND'),
+              ),
+              style: ElevatedButton.styleFrom(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                primary: primaryColor,
+              ),
+              onPressed: () {
+                SendMoney();
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => SendMoneyConfirmation()));
+              },
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  void SendMoney() {
+    if (widget.profile.balance < amount) {
+      error_toast("Insufficient funds");
+      return;
+    } else {
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  SendMoneyConfirmation(receiver: receiver, amount: amount)));
+    }
+  }
+}
