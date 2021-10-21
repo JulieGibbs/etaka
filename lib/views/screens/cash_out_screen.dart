@@ -1,5 +1,7 @@
+import 'package:etaka/logics/services/API/api_helper.dart';
 import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
+import 'package:etaka/views/screens/transaction_successfull.dart';
 import 'package:flutter/material.dart';
 
 class CashOutScreen extends StatefulWidget {
@@ -10,6 +12,8 @@ class CashOutScreen extends StatefulWidget {
 }
 
 class _CashOutScreenState extends State<CashOutScreen> {
+  late String agent, pin;
+  late double amount;
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -33,6 +37,9 @@ class _CashOutScreenState extends State<CashOutScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
             child: TextField(
+              onChanged: (val) {
+                agent = val;
+              },
               decoration: InputDecoration(
                   hintText: "017xxxxxxxx", labelText: "Enter Agent Number"),
             ),
@@ -47,6 +54,9 @@ class _CashOutScreenState extends State<CashOutScreen> {
               bottom: 10,
             ),
             child: TextField(
+              onChanged: (val) {
+                amount = double.parse(val);
+              },
               decoration:
                   InputDecoration(hintText: "1000", labelText: "Enter Amount"),
             ),
@@ -57,6 +67,9 @@ class _CashOutScreenState extends State<CashOutScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
             child: TextField(
+              onChanged: (val) {
+                pin = val;
+              },
               obscureText: true,
               decoration: InputDecoration(
                 hintText: "******",
@@ -80,11 +93,20 @@ class _CashOutScreenState extends State<CashOutScreen> {
                 ),
                 primary: primaryColor,
               ),
-              onPressed: () {
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (context) => SendMoneyConfirmation()));
+              onPressed: () async {
+                APIService api = APIService();
+                bool ch = await api.CashOut(agent, amount);
+                if (ch) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TransactionSuccessful(
+                        receiver: agent,
+                        amount: amount,
+                      ),
+                    ),
+                  );
+                }
               },
             ),
           )
