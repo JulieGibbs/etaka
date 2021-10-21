@@ -39,8 +39,8 @@ class _TransactionHistoryState extends State<TransactionHistory> {
                   width: 400,
                   height: 70,
                   decoration: BoxDecoration(
-                    // border: Border.all(
-                    //   color: Colors.black,
+                     //border: Border.all(
+                       color: Colors.black12,
                     //   width: 1,
                     // ),
                     borderRadius: BorderRadius.circular(10),
