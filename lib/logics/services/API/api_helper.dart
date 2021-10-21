@@ -252,4 +252,39 @@ class APIService {
     );
     return false;
   }
+
+  Future<dynamic> CashOut(String agent, double amount) async {
+    print(amount);
+    String funcURL = 'transaction/cashout/';
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('token') ?? "";
+    var uri = Uri.parse(endpoint + funcURL);
+    var response;
+    try {
+      var data = {
+        "cashout_agent": "+" + agent,
+        "cashout_amount": amount,
+      };
+      var json = jsonEncode(data);
+      response = await http.post(uri,
+          headers: {
+            "Content-type": "application/json",
+            "Authorization": token,
+          },
+          body: json);
+    } catch (e) {
+      print(e);
+    }
+    print(response.statusCode);
+    // var data = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      // prefs.setBool("user_exist", false);
+    }
+    error_toast(
+      "Cashout Failed",
+    );
+    return false;
+  }
 }
