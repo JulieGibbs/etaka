@@ -55,9 +55,15 @@ class _TransactionHistoryState extends State<TransactionHistory> {
                                 'https://www.pngitem.com/pimgs/m/421-4213036_avatar-hd-png-download.png'),
                           ),
 
-                          Text(" Name ", style: TextStyle(fontSize: 20)),
+                          Column(
+                            children:[
+                              Text(" Name ", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black)),
+
+                              Text("22-Oct-2021     12:19 AM",style: TextStyle(fontSize: 15, color: Colors.grey),),
+                            ],
+                          ),
                           Spacer(flex: 2,),
-                          Text("Amount", style: TextStyle(fontSize: 20),)
+                          Text("+ 12,000 Tk", style: TextStyle(fontSize: 20, color: Colors.green),)
                         ],
                       ),
                   ),
