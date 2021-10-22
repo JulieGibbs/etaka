@@ -44,14 +44,17 @@ class TransactionSuccessfulState extends State<TransactionSuccessful> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 150,
+                  height: 50,
                 ),
                 Center(
                   child: Container(
-                    width: 50,
-                    height: 50,
+                    width: 70,
+                    height: 70,
                     child: Image.asset("assets/img/checked.png"),
                   ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 Center(
                   child: Text(
@@ -62,6 +65,9 @@ class TransactionSuccessfulState extends State<TransactionSuccessful> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
                 Center(
                   child: Card(
                     elevation: 4,
@@ -69,8 +75,8 @@ class TransactionSuccessfulState extends State<TransactionSuccessful> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Container(
+                      padding: EdgeInsets.all(30),
                       width: 300,
-                      height: 250,
                       decoration: BoxDecoration(
                         // border: Border.all(
                         //   color: Colors.black,
