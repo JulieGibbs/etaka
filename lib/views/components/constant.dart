@@ -7,3 +7,8 @@ final loading = SpinKitThreeBounce(
   color: Colors.white,
   size: 30.0,
 );
+
+final blue_loading = SpinKitThreeBounce(
+  color: primaryColor,
+  size: 30.0,
+);
