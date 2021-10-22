@@ -2,6 +2,7 @@ import 'package:etaka/logics/models/merchant.dart';
 import 'package:etaka/logics/services/API/api_helper.dart';
 import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
+import 'package:etaka/views/screens/transaction_successfull.dart';
 import 'package:etaka/views/utils/app_const.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,8 @@ class PayBillConfirm extends StatefulWidget {
 }
 
 class _PayBillConfirmState extends State<PayBillConfirm> {
+  late String reference, pin;
+  late double amount;
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -28,8 +31,8 @@ class _PayBillConfirmState extends State<PayBillConfirm> {
           Text(
             "Enter Your Payment Details",
             style: Theme.of(context).textTheme.headline6!.copyWith(
-              color: Colors.grey.shade500,
-            ),
+                  color: Colors.grey.shade500,
+                ),
           ),
           SizedBox(
             height: 70,
@@ -38,7 +41,7 @@ class _PayBillConfirmState extends State<PayBillConfirm> {
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
             child: TextField(
               onChanged: (val) {
-                //agent = val;
+                reference = val;
               },
               decoration: InputDecoration(
                   hintText: "A102020", labelText: "Enter Reference Number"),
@@ -55,10 +58,10 @@ class _PayBillConfirmState extends State<PayBillConfirm> {
             ),
             child: TextField(
               onChanged: (val) {
-                //amount = double.parse(val);
+                amount = double.parse(val);
               },
               decoration:
-              InputDecoration(hintText: "1000", labelText: "Enter Amount"),
+                  InputDecoration(hintText: "1000", labelText: "Enter Amount"),
             ),
           ),
           SizedBox(
@@ -68,7 +71,7 @@ class _PayBillConfirmState extends State<PayBillConfirm> {
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
             child: TextField(
               onChanged: (val) {
-                //pin = val;
+                pin = val;
               },
               obscureText: true,
               decoration: InputDecoration(
@@ -95,18 +98,19 @@ class _PayBillConfirmState extends State<PayBillConfirm> {
               ),
               onPressed: () async {
                 APIService api = APIService();
-                //bool ch = await api.CashOut(agent, amount);
-                // if (ch) {
-                //   Navigator.pushReplacement(
-                //     context,
-                //     MaterialPageRoute(
-                //       builder: (context) => TransactionSuccessful(
-                //         receiver: agent,
-                //         amount: amount,
-                //       ),
-                //     ),
-                //   );
-                // }
+                bool ch =
+                    await api.BillPayment(widget.mechant.id, amount, reference);
+                if (ch) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TransactionSuccessful(
+                        receiver: widget.mechant.orgName,
+                        amount: amount,
+                      ),
+                    ),
+                  );
+                }
               },
             ),
           )
