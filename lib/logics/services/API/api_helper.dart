@@ -179,6 +179,29 @@ class APIService {
     return null;
   }
 
+  Future<dynamic> getMerchantData({String filter = ""}) async {
+    String funcURL = filter == ""
+        ? 'accounts/merchants/'
+        : 'accounts/merchants/?merchant_type=${filter}';
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('token') ?? "";
+    var uri = Uri.parse(endpoint + funcURL);
+    var response;
+    try {
+      response = await http.get(uri, headers: {
+        "Authorization": token,
+      });
+    } catch (e) {
+      print(e);
+    }
+    print(response.statusCode);
+    var data = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      return response.body;
+    }
+    return null;
+  }
+
   Future<dynamic> SendMoney(String receiver, double amount) async {
     print(amount);
     String funcURL = 'transaction/sendmoney/';
