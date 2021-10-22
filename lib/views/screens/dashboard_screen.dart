@@ -7,6 +7,7 @@ import 'package:etaka/views/screens/send_money_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'add _money.dart';
+import 'bill_payment_screen.dart';
 import 'cash_out_screen.dart';
 import 'mobile_recharge_screen.dart';
 
@@ -193,26 +194,124 @@ class _DashboardState extends State<Dashboard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    PayBillsItem(
-                        asset: "assets/img/electricity.png",
-                        title: "Electricity"),
-                    PayBillsItem(asset: "assets/img/gas.png", title: "Gas"),
-                    PayBillsItem(asset: "assets/img/water.png", title: "Water"),
-                    PayBillsItem(
-                        asset: "assets/img/education.png", title: "Education")
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BillPayment(
+                              type: 'ELEC',
+                            ),
+                          ),
+                        );
+                      },
+                      child: PayBillsItem(
+                          asset: "assets/img/electricity.png",
+                          title: "Electricity"),
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BillPayment(
+                                type: 'GAS',
+                              ),
+                            ),
+                          );
+                        },
+                        child: PayBillsItem(
+                            asset: "assets/img/gas.png", title: "Gas")),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BillPayment(
+                                type: 'WAT',
+                              ),
+                            ),
+                          );
+                        },
+                        child: PayBillsItem(
+                            asset: "assets/img/water.png", title: "Water")),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BillPayment(
+                              type: 'EDU',
+                            ),
+                          ),
+                        );
+                      },
+                      child: PayBillsItem(
+                          asset: "assets/img/education.png",
+                          title: "Education"),
+                    )
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    PayBillsItem(
-                        asset: "assets/img/internet.png", title: "Internet"),
-                    PayBillsItem(
-                        asset: "assets/img/credit-card.png",
-                        title: "Credit Card"),
-                    PayBillsItem(
-                        asset: "assets/img/telephone.png", title: "Telephone"),
-                    PayBillsItem(asset: "assets/img/tv.png", title: "TV")
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BillPayment(
+                              type: 'NET',
+                            ),
+                          ),
+                        );
+                      },
+                      child: PayBillsItem(
+                          asset: "assets/img/internet.png", title: "Internet"),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BillPayment(
+                              type: 'CARD',
+                            ),
+                          ),
+                        );
+                      },
+                      child: PayBillsItem(
+                          asset: "assets/img/credit-card.png",
+                          title: "Credit Card"),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BillPayment(
+                              type: 'TEL',
+                            ),
+                          ),
+                        );
+                      },
+                      child: PayBillsItem(
+                          asset: "assets/img/telephone.png",
+                          title: "Telephone"),
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BillPayment(
+                                type: 'TV',
+                              ),
+                            ),
+                          );
+                        },
+                        child: PayBillsItem(
+                            asset: "assets/img/tv.png", title: "TV"))
                   ],
                 )
               ],
