@@ -310,4 +310,41 @@ class APIService {
     );
     return false;
   }
+
+  Future<dynamic> BillPayment(
+      int merchant_id, double amount, String reference) async {
+    print(amount);
+    String funcURL = 'transaction/bill-payment/';
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('token') ?? "";
+    var uri = Uri.parse(endpoint + funcURL);
+    var response;
+    try {
+      var data = {
+        "merchant_id": merchant_id,
+        "bill_amount": amount,
+        "reference": reference
+      };
+      var json = jsonEncode(data);
+      response = await http.post(uri,
+          headers: {
+            "Content-type": "application/json",
+            "Authorization": token,
+          },
+          body: json);
+    } catch (e) {
+      print(e);
+    }
+    print(response.statusCode);
+    // var data = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      // prefs.setBool("user_exist", false);
+    }
+    error_toast(
+      "Bill Payment Failed",
+    );
+    return false;
+  }
 }
