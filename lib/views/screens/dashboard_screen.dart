@@ -11,370 +11,168 @@ import 'bill_payment_screen.dart';
 import 'cash_out_screen.dart';
 import 'mobile_recharge_screen.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
-  _DashboardState createState() => _DashboardState();
+  _ProfileScreenState createState() => _ProfileScreenState();
 }
 
-class _DashboardState extends State<Dashboard> {
-  late Profile profile;
-  bool isLoading = true;
-  @override
-  void initState() {
-    // TODO: implement initState
-    getdata();
-    super.initState();
-  }
-
-  Future<void> getdata() async {
-    APIService api = APIService();
-    var data = await api.getProfileData();
-    profile = Profile.fromJson(data);
-    setState(() {
-      isLoading = false;
-    });
-  }
-
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-        Container(
-          padding: EdgeInsets.all(8),
-          alignment: Alignment.topRight,
-          color: Color(0xFF005CEE),
-          child: Column(
-            children: [
-              SafeArea(
-                child: Row(children: [
-                  isLoading
-                      ? loading
-                      : Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("BDT ${profile.balance.toStringAsFixed(2)}",
-                                  style: TextStyle(
-                                      fontSize: 26,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold)),
-                              Text("active balance".toUpperCase(),
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.white.withOpacity(0.6))),
-                            ],
-                          ),
-                        ),
-                  ElevatedButton(
-                    child: Text(' + Add Money',
-                        style: TextStyle(
-                            color: primaryColor, fontWeight: FontWeight.bold)),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      primary: Colors.white,
-                    ),
-                    onPressed: () async {
-                      var c = await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddMoneyScreen(
-                                    profile: profile,
-                                  )));
-                      await getdata();
-                      setState(() {});
-                    },
-                  ),
-                  Spacer(),
-                  ClipOval(
-                    child: Material(
-                      color: Colors
-                          .transparent, //To let the Container background be displayed
-                      child: IconButton(
-                          icon: Icon(
-                            Icons.notifications,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {}),
-                    ),
-                  ),
-                  ClipOval(
-                    child: Material(
-                      color: Colors
-                          .transparent, //To let the Container background be displayed
-                      child: IconButton(
-                          icon: Icon(
-                            Icons.account_circle_rounded,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {}),
-                    ),
-                  ),
-                ]),
-              ),
-              SizedBox(height: 10),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                DashBoardMainItemCard(
-                  asset: "assets/svg/Sendmoney.svg",
-                  title: "SEND MONEY",
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SendMoneyScreen(
-                                  profile: profile,
-                                )));
-                  },
-                ),
-                DashBoardMainItemCard(
-                  asset: "assets/svg/Cashout.svg",
-                  title: "CASH OUT",
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CashOutScreen()));
-                  },
-                ),
-                DashBoardMainItemCard(
-                  asset: "assets/svg/Recharge.svg",
-                  title: "RECHARGE",
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MobileRechargeScreen()));
-                  },
-                ),
-                DashBoardMainItemCard(
-                  asset: "assets/svg/Scan.svg",
-                  title: "PAY NOW",
-                  onTap: () {},
-                ),
-              ])
-            ],
+    double h = MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
+    return CustomScaffold(
+      isRoot: true,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Text(
+              "My Account",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+            ),
           ),
-        ),
-        SizedBox(),
-        Container(
-            decoration: BoxDecoration(color: Color(0xFFEEF2F8)),
-            width: double.infinity,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Pay Bills".toUpperCase(),
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black87.withOpacity(0.8)),
-                      ),
-                      Spacer(),
-                      ClipOval(
-                        child: Material(
-                          color: Colors
-                              .transparent, //To let the Container background be displayed
-                          child: IconButton(
-                              icon: Icon(Icons.arrow_forward_ios_rounded,
-                                  color: Colors.black87, size: 20),
-                              onPressed: () {}),
-                        ),
-                      ),
-                    ],
-                  ),
+          Center(
+            child: Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Container(
+                width: 500,
+                decoration: BoxDecoration(
+                  // border: Border.all(
+                  //   color: Colors.black,
+                  //   width: 1,
+                  // ),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                child: Row(
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BillPayment(
-                              type: 'ELEC',
-                            ),
-                          ),
-                        );
-                      },
-                      child: PayBillsItem(
-                          asset: "assets/img/electricity.png",
-                          title: "Electricity"),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: CircleAvatar(
+                        radius: 35,
+                        backgroundImage: NetworkImage(
+                            'https://www.pngitem.com/pimgs/m/421-4213036_avatar-hd-png-download.png'),
+                      ),
                     ),
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => BillPayment(
-                                type: 'GAS',
-                              ),
-                            ),
-                          );
-                        },
-                        child: PayBillsItem(
-                            asset: "assets/img/gas.png", title: "Gas")),
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => BillPayment(
-                                type: 'WAT',
-                              ),
-                            ),
-                          );
-                        },
-                        child: PayBillsItem(
-                            asset: "assets/img/water.png", title: "Water")),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BillPayment(
-                              type: 'EDU',
-                            ),
-                          ),
-                        );
-                      },
-                      child: PayBillsItem(
-                          asset: "assets/img/education.png",
-                          title: "Education"),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Name ", style: TextStyle(fontSize: 24)),
+                        Text("Mobile Number", style: TextStyle(fontSize: 18)),
+                      ],
                     )
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BillPayment(
-                              type: 'NET',
-                            ),
-                          ),
-                        );
-                      },
-                      child: PayBillsItem(
-                          asset: "assets/img/internet.png", title: "Internet"),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BillPayment(
-                              type: 'CARD',
-                            ),
-                          ),
-                        );
-                      },
-                      child: PayBillsItem(
-                          asset: "assets/img/credit-card.png",
-                          title: "Credit Card"),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BillPayment(
-                              type: 'TEL',
-                            ),
-                          ),
-                        );
-                      },
-                      child: PayBillsItem(
-                          asset: "assets/img/telephone.png",
-                          title: "Telephone"),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => BillPayment(
-                                type: 'TV',
-                              ),
-                            ),
-                          );
-                        },
-                        child: PayBillsItem(
-                            asset: "assets/img/tv.png", title: "TV"))
-                  ],
-                )
-              ],
-            )),
-        SizedBox(height: 10),
-        Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Card(
-            elevation: 5,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Color(0xFFEEF2F8),
-                  borderRadius: BorderRadius.circular(15)),
-              child: Column(
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Expenses".toUpperCase(),
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.normal),
-                            ),
-                            SizedBox(height: 2),
-                            Text(
-                              "1 Sep 2021 - 30 Sep 2021",
-                              style: TextStyle(
-                                  color: Colors.black38,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.normal),
-                            ),
-                            SizedBox(height: 10),
-                            Text(
-                              "BDT 26,600",
-                              style: TextStyle(
-                                  color: Colors.black87,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Spacer(),
-                      Container(
-                          height: 130, width: 130, child: PieChartSample2()),
-                    ],
-                  ),
-                  IndicatorRow()
-                ],
               ),
             ),
           ),
-        ),
-      ]),
+          SizedBox(
+            height: 40,
+          ),
+          ListView(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            children: const <Widget>[
+              Text(
+                "Settings",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(
+                    Icons.password,
+                    color: Colors.pink,
+                  ),
+                  title: Text('Change PIN'),
+                  trailing: Icon(Icons.arrow_forward),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(
+                    Icons.language,
+                    color: Colors.purple,
+                  ),
+                  title: Text('Change Language'),
+                  trailing: Icon(Icons.arrow_forward),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(
+                    Icons.perm_data_setting,
+                    color: Colors.amber,
+                  ),
+                  title: Text('Change Permissions'),
+                  trailing: Icon(Icons.arrow_forward),
+                ),
+              ),
+              Text(
+                "etaka Support",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.support_agent, color: Colors.lightBlue,),
+                  title: Text('24x7 Support'),
+                  trailing: Icon(Icons.arrow_forward),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.support, color: Colors.red,),
+                  title: Text('FAQ'),
+                  trailing: Icon(Icons.arrow_forward),
+                ),
+              ),
+
+              Text("Account Services",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.info, color: Colors.cyan,),
+                  title: Text('Update MNP Info'),
+                  trailing: Icon(Icons.arrow_forward),
+                ),
+              ),
+
+              Text("Terms & Policies",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.message, color: Colors.deepPurpleAccent,),
+                  title: Text('Terms Of Use'),
+                  trailing: Icon(Icons.arrow_forward),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.privacy_tip, color: Colors.green,),
+                  title: Text('Privacy Policy'),
+                  trailing: Icon(Icons.arrow_forward),
+                ),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              Card(
+                  child: ListTile(
+                      leading: Icon(Icons.logout, color: Colors.red,),
+                      title: Text("Log Out",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.red)))),
+            ],
+          )
+        ],
+      ),
     );
   }
 }
