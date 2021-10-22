@@ -1,3 +1,6 @@
+import 'package:etaka/logics/models/profile.dart';
+import 'package:etaka/logics/services/API/api_helper.dart';
+import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +12,24 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  late Profile profile;
+  bool isLoading = true;
+  @override
+  void initState() {
+    // TODO: implement initState
+    getdata();
+    super.initState();
+  }
+
+  Future<void> getdata() async {
+    APIService api = APIService();
+    var data = await api.getProfileData();
+    profile = Profile.fromJson(data);
+    setState(() {
+      isLoading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -22,7 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
-              "My Account",
+              "My Account".toUpperCase(),
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
             ),
           ),
@@ -32,35 +53,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Container(
-                width: 500,
-                decoration: BoxDecoration(
-                  // border: Border.all(
-                  //   color: Colors.black,
-                  //   width: 1,
-                  // ),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: CircleAvatar(
-                        radius: 35,
-                        backgroundImage: NetworkImage(
-                            'https://www.pngitem.com/pimgs/m/421-4213036_avatar-hd-png-download.png'),
+              child: !isLoading
+                  ? Container(
+                      width: 500,
+                      decoration: BoxDecoration(
+                        // border: Border.all(
+                        //   color: Colors.black,
+                        //   width: 1,
+                        // ),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Name ", style: TextStyle(fontSize: 24)),
-                        Text("Mobile Number", style: TextStyle(fontSize: 18)),
-                      ],
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: CircleAvatar(
+                              radius: 35,
+                              backgroundImage: NetworkImage(
+                                  'https://www.pngitem.com/pimgs/m/421-4213036_avatar-hd-png-download.png'),
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                  "${profile.firstName + " " + profile.lastName}",
+                                  style: TextStyle(fontSize: 22)),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text("${profile.mobile}",
+                                  style: TextStyle(fontSize: 16)),
+                            ],
+                          )
+                        ],
+                      ),
                     )
-                  ],
-                ),
-              ),
+                  : Center(
+                      child: blue_loading,
+                    ),
             ),
           ),
           SizedBox(
@@ -110,41 +141,56 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.support_agent, color: Colors.lightBlue,),
+                  leading: Icon(
+                    Icons.support_agent,
+                    color: Colors.lightBlue,
+                  ),
                   title: Text('24x7 Support'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.support, color: Colors.red,),
+                  leading: Icon(
+                    Icons.support,
+                    color: Colors.red,
+                  ),
                   title: Text('FAQ'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
-
-              Text("Account Services",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+              Text(
+                "Account Services",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.info, color: Colors.cyan,),
+                  leading: Icon(
+                    Icons.info,
+                    color: Colors.cyan,
+                  ),
                   title: Text('Update MNP Info'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
-
               Text("Terms & Policies",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.message, color: Colors.deepPurpleAccent,),
+                  leading: Icon(
+                    Icons.message,
+                    color: Colors.deepPurpleAccent,
+                  ),
                   title: Text('Terms Of Use'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.privacy_tip, color: Colors.green,),
+                  leading: Icon(
+                    Icons.privacy_tip,
+                    color: Colors.green,
+                  ),
                   title: Text('Privacy Policy'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
@@ -154,7 +200,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Card(
                   child: ListTile(
-                      leading: Icon(Icons.logout, color: Colors.red,),
+                      leading: Icon(
+                        Icons.logout,
+                        color: Colors.red,
+                      ),
                       title: Text("Log Out",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
