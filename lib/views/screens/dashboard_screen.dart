@@ -5,6 +5,7 @@ import 'package:etaka/views/components/pie_chart.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:etaka/views/screens/send_money_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'add _money.dart';
 import 'bill_payment_screen.dart';
@@ -29,6 +30,11 @@ class _DashboardState extends State<Dashboard> {
   }
 
   Future<void> getdata() async {
+    LocationPermission permission = await Geolocator.requestPermission();
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    print(position.latitude);
+    print(position.longitude);
     APIService api = APIService();
     var data = await api.getProfileData();
     profile = Profile.fromJson(data);
@@ -53,24 +59,24 @@ class _DashboardState extends State<Dashboard> {
                   isLoading
                       ? loading
                       : Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("BDT ${profile.balance.toStringAsFixed(2)}",
-                            style: TextStyle(
-                                fontSize: 26,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)),
-                        Text("active balance".toUpperCase(),
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.white.withOpacity(0.6))),
-                      ],
-                    ),
-                  ),
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("BDT ${profile.balance.toStringAsFixed(2)}",
+                                  style: TextStyle(
+                                      fontSize: 26,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold)),
+                              Text("active balance".toUpperCase(),
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.white.withOpacity(0.6))),
+                            ],
+                          ),
+                        ),
                   ElevatedButton(
                     child: Text(' + Add Money',
                         style: TextStyle(
@@ -85,8 +91,8 @@ class _DashboardState extends State<Dashboard> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => AddMoneyScreen(
-                                profile: profile,
-                              )));
+                                    profile: profile,
+                                  )));
                       await getdata();
                       setState(() {});
                     },
@@ -128,8 +134,8 @@ class _DashboardState extends State<Dashboard> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => SendMoneyScreen(
-                              profile: profile,
-                            )));
+                                  profile: profile,
+                                )));
                   },
                 ),
                 DashBoardMainItemCard(
