@@ -1,162 +1,370 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class PieChartSample2 extends StatefulWidget {
+class Dashboard extends StatefulWidget {
+  const Dashboard({Key? key}) : super(key: key);
+
   @override
-  State<StatefulWidget> createState() => PieChart2State();
+  _DashboardState createState() => _DashboardState();
 }
 
-class PieChart2State extends State {
-  int touchedIndex = -1;
+class _DashboardState extends State<Dashboard> {
+  late Profile profile;
+  bool isLoading = true;
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          alignment: Alignment.centerRight,
-          height: 120,
-          child: PieChart(
-            PieChartData(
-              pieTouchData: PieTouchData(
-                  touchCallback: (FlTouchEvent event, pieTouchResponse) {
-                    setState(() {
-                      if (!event.isInterestedForInteractions ||
-                          pieTouchResponse == null ||
-                          pieTouchResponse.touchedSection == null) {
-                        touchedIndex = -1;
-                        return;
-                      }
-                      touchedIndex =
-                          pieTouchResponse.touchedSection!.touchedSectionIndex;
-                    });
-                  }),
-              borderData: FlBorderData(
-                show: false,
-              ),
-              sectionsSpace: 0,
-              centerSpaceRadius: 30,
-              sections: showingSections(),
-            ),
-          ),
-        ),
-      ],
-    );
+  void initState() {
+    // TODO: implement initState
+    getdata();
+    super.initState();
   }
 
-  List<PieChartSectionData> showingSections() {
-    return List.generate(3, (i) {
-      final isTouched = i == touchedIndex;
-      final fontSize = isTouched ? 25.0 : 16.0;
-      final radius = isTouched ? 30.0 : 15.0;
-      switch (i) {
-        case 0:
-          return PieChartSectionData(
-            showTitle: isTouched,
-            color: const Color(0xff0293ee),
-            value: 40,
-            title: '40%',
-            radius: radius,
-            titleStyle: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xffffffff)),
-          );
-        case 1:
-          return PieChartSectionData(
-            showTitle: isTouched,
-            color: const Color(0xfff8b250),
-            value: 30,
-            title: '30%',
-            radius: radius,
-            titleStyle: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xffffffff)),
-          );
-        case 2:
-          return PieChartSectionData(
-            showTitle: isTouched,
-            color: const Color(0xff13d38e),
-            value: 15,
-            title: '15%',
-            radius: radius,
-            titleStyle: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xffffffff)),
-          );
-        default:
-          throw Error();
-      }
+  Future<void> getdata() async {
+    APIService api = APIService();
+    var data = await api.getProfileData();
+    profile = Profile.fromJson(data);
+    setState(() {
+      isLoading = false;
     });
   }
-}
-
-class Indicator extends StatelessWidget {
-  final Color color;
-  final String text;
-  final double size;
-  final Color textColor;
-
-  const Indicator({
-    Key? key,
-    required this.color,
-    required this.text,
-    this.size = 16,
-    this.textColor = const Color(0xff505050),
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: Card(
-        elevation: 3,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+        Container(
+          padding: EdgeInsets.all(8),
+          alignment: Alignment.topRight,
+          color: Color(0xFF005CEE),
+          child: Column(
+            children: [
+              SafeArea(
+                child: Row(children: [
+                  isLoading
+                      ? loading
+                      : Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("BDT ${profile.balance.toStringAsFixed(2)}",
+                            style: TextStyle(
+                                fontSize: 26,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold)),
+                        Text("active balance".toUpperCase(),
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white.withOpacity(0.6))),
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                    child: Text(' + Add Money',
+                        style: TextStyle(
+                            color: primaryColor, fontWeight: FontWeight.bold)),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      primary: Colors.white,
+                    ),
+                    onPressed: () async {
+                      var c = await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddMoneyScreen(
+                                profile: profile,
+                              )));
+                      await getdata();
+                      setState(() {});
+                    },
+                  ),
+                  Spacer(),
+                  ClipOval(
+                    child: Material(
+                      color: Colors
+                          .transparent, //To let the Container background be displayed
+                      child: IconButton(
+                          icon: Icon(
+                            Icons.notifications,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {}),
+                    ),
+                  ),
+                  ClipOval(
+                    child: Material(
+                      color: Colors
+                          .transparent, //To let the Container background be displayed
+                      child: IconButton(
+                          icon: Icon(
+                            Icons.account_circle_rounded,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {}),
+                    ),
+                  ),
+                ]),
+              ),
+              SizedBox(height: 10),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                DashBoardMainItemCard(
+                  asset: "assets/svg/Sendmoney.svg",
+                  title: "SEND MONEY",
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SendMoneyScreen(
+                              profile: profile,
+                            )));
+                  },
+                ),
+                DashBoardMainItemCard(
+                  asset: "assets/svg/Cashout.svg",
+                  title: "CASH OUT",
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CashOutScreen()));
+                  },
+                ),
+                DashBoardMainItemCard(
+                  asset: "assets/svg/Recharge.svg",
+                  title: "RECHARGE",
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MobileRechargeScreen()));
+                  },
+                ),
+                DashBoardMainItemCard(
+                  asset: "assets/svg/Scan.svg",
+                  title: "PAY NOW",
+                  onTap: () {},
+                ),
+              ])
+            ],
+          ),
         ),
-        child: Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: color,
-            ),
-            child: Text(
-              text,
-              style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
+        SizedBox(),
+        Container(
+            decoration: BoxDecoration(color: Color(0xFFEEF2F8)),
+            width: double.infinity,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Pay Bills".toUpperCase(),
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black87.withOpacity(0.8)),
+                      ),
+                      Spacer(),
+                      ClipOval(
+                        child: Material(
+                          color: Colors
+                              .transparent, //To let the Container background be displayed
+                          child: IconButton(
+                              icon: Icon(Icons.arrow_forward_ios_rounded,
+                                  color: Colors.black87, size: 20),
+                              onPressed: () {}),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BillPayment(
+                              type: 'ELEC',
+                            ),
+                          ),
+                        );
+                      },
+                      child: PayBillsItem(
+                          asset: "assets/img/electricity.png",
+                          title: "Electricity"),
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BillPayment(
+                                type: 'GAS',
+                              ),
+                            ),
+                          );
+                        },
+                        child: PayBillsItem(
+                            asset: "assets/img/gas.png", title: "Gas")),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BillPayment(
+                                type: 'WAT',
+                              ),
+                            ),
+                          );
+                        },
+                        child: PayBillsItem(
+                            asset: "assets/img/water.png", title: "Water")),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BillPayment(
+                              type: 'EDU',
+                            ),
+                          ),
+                        );
+                      },
+                      child: PayBillsItem(
+                          asset: "assets/img/education.png",
+                          title: "Education"),
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BillPayment(
+                              type: 'NET',
+                            ),
+                          ),
+                        );
+                      },
+                      child: PayBillsItem(
+                          asset: "assets/img/internet.png", title: "Internet"),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BillPayment(
+                              type: 'CARD',
+                            ),
+                          ),
+                        );
+                      },
+                      child: PayBillsItem(
+                          asset: "assets/img/credit-card.png",
+                          title: "Credit Card"),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BillPayment(
+                              type: 'TEL',
+                            ),
+                          ),
+                        );
+                      },
+                      child: PayBillsItem(
+                          asset: "assets/img/telephone.png",
+                          title: "Telephone"),
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BillPayment(
+                                type: 'TV',
+                              ),
+                            ),
+                          );
+                        },
+                        child: PayBillsItem(
+                            asset: "assets/img/tv.png", title: "TV"))
+                  ],
+                )
+              ],
             )),
-      ),
-    );
-  }
-}
-
-class IndicatorRow extends StatelessWidget {
-  const IndicatorRow({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Indicator(
-            color: Color(0xff0293ee),
-            text: '40% Send Money',
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Card(
+            elevation: 5,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Color(0xFFEEF2F8),
+                  borderRadius: BorderRadius.circular(15)),
+              child: Column(
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Expenses".toUpperCase(),
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.normal),
+                            ),
+                            SizedBox(height: 2),
+                            Text(
+                              "1 Sep 2021 - 30 Sep 2021",
+                              style: TextStyle(
+                                  color: Colors.black38,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal),
+                            ),
+                            SizedBox(height: 10),
+                            Text(
+                              "BDT 26,600",
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Spacer(),
+                      Container(
+                          height: 130, width: 130, child: PieChartSample2()),
+                    ],
+                  ),
+                  IndicatorRow()
+                ],
+              ),
+            ),
           ),
-          Indicator(
-            color: const Color(0xfff8b250),
-            text: '20% Recharge',
-          ),
-          Indicator(
-            color: const Color(0xff13d38e),
-            text: '40% Cashout',
-          ),
-        ],
-      ),
+        ),
+      ]),
     );
   }
 }
