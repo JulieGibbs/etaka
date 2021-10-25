@@ -1,3 +1,4 @@
+import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
 
 class Notification extends StatefulWidget {
@@ -10,6 +11,9 @@ class Notification extends StatefulWidget {
 class _NotificationState extends State<Notification> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return CustomScaffold(
+      body: Column()
+
+    );
   }
 }
