@@ -1,19 +1,20 @@
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
 
-class Notification extends StatefulWidget {
-  const Notification({Key? key}) : super(key: key);
+class NotificationScreen extends StatefulWidget {
+  const NotificationScreen({Key? key}) : super(key: key);
 
   @override
-  _NotificationState createState() => _NotificationState();
+  _NotificationScreenState createState() => _NotificationScreenState();
 }
 
-class _NotificationState extends State<Notification> {
+class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      body: Column()
-
+      body: Column(
+        
+      )
     );
   }
 }
