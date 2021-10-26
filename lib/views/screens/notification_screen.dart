@@ -13,7 +13,19 @@ class _NotificationScreenState extends State<NotificationScreen> {
   Widget build(BuildContext context) {
     return CustomScaffold(
       body: Column(
-        
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+        SizedBox(
+        height: 10,
+      ),
+      Padding(
+        padding: const EdgeInsets.only(left: 100, ),
+        child: Text(
+          "Notifications",
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500, ),
+        ),
+      ),
+      ]
       )
     );
   }
