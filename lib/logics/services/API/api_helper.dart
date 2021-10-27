@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:etaka/views/components/toast.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -346,5 +347,41 @@ class APIService {
       "Bill Payment Failed",
     );
     return false;
+  }
+
+  Future<String> getLocationCity() async {
+    LocationPermission permission = await Geolocator.requestPermission();
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    print(position.latitude);
+    print(position.longitude);
+    var uri = Uri.parse(
+        "https://barikoi.xyz/v1/api/search/reverse/MTpPVkhCVEZaM09F/geocode?longitude=${position.longitude}&latitude=${position.latitude}");
+    var response;
+    try {
+      response = await http.get(
+        uri,
+      );
+    } catch (e) {
+      print(e);
+    }
+    var data = json.decode(response.body);
+    return data['place']['city'];
+  }
+
+  Future<String> getOffers() async {
+    String city = await getLocationCity();
+    var uri = Uri.parse(
+        "https://ssoad.pythonanywhere.com/transaction/offers/?location=${city}");
+    var response;
+    try {
+      response = await http.get(
+        uri,
+      );
+    } catch (e) {
+      print(e);
+    }
+    var data = json.decode(response.body);
+    return response.body;
   }
 }
