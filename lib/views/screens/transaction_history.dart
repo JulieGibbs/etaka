@@ -56,6 +56,7 @@ class _TransactionHistoryState extends State<TransactionHistory> {
                           ),
 
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children:[
                               Text(" Name ", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black)),
 
