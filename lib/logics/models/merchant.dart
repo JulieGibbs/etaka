@@ -17,6 +17,7 @@ class Merchant {
     required this.merchantType,
     required this.tradeLic,
     required this.balance,
+    this.photo,
     required this.user,
   });
 
@@ -25,6 +26,7 @@ class Merchant {
   String merchantType;
   String tradeLic;
   double balance;
+  String? photo;
   String user;
 
   factory Merchant.fromJson(Map<String, dynamic> json) => Merchant(
@@ -33,6 +35,7 @@ class Merchant {
         merchantType: json["merchant_type"],
         tradeLic: json["trade_lic"],
         balance: json["balance"],
+        photo: json["photo"] == null ? null : json["photo"],
         user: json["user"],
       );
 
@@ -42,6 +45,7 @@ class Merchant {
         "merchant_type": merchantType,
         "trade_lic": tradeLic,
         "balance": balance,
+        "photo": photo == null ? null : photo,
         "user": user,
       };
 }
