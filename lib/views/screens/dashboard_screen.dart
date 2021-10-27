@@ -5,7 +5,6 @@ import 'package:etaka/views/components/pie_chart.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:etaka/views/screens/send_money_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 
 import 'add _money.dart';
 import 'bill_payment_screen.dart';
@@ -30,13 +29,11 @@ class _DashboardState extends State<Dashboard> {
   }
 
   Future<void> getdata() async {
-    LocationPermission permission = await Geolocator.requestPermission();
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-    print(position.latitude);
-    print(position.longitude);
     APIService api = APIService();
     var data = await api.getProfileData();
+    String loc = await api.getLocationCity();
+    print(loc.toUpperCase());
+
     profile = Profile.fromJson(data);
     setState(() {
       isLoading = false;
