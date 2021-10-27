@@ -49,10 +49,10 @@ class _DashboardMainState extends State<DashboardMain> {
         inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.account_circle_rounded),
-        title: ("Account"),
-        activeColorPrimary: Colors.blueAccent,
-        activeColorSecondary: Colors.indigo,
+        icon: Icon(Icons.local_offer),
+        title: ("Offers"),
+        activeColorPrimary: Colors.deepOrange,
+        activeColorSecondary: Colors.deepOrangeAccent,
         inactiveColorPrimary: Colors.grey,
         // routeAndNavigatorSettings: RouteAndNavigatorSettings(
         //   initialRoute: '/',
