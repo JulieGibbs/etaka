@@ -11,7 +11,6 @@ class DashBoardMainItemCard extends StatelessWidget {
       {Key? key, required this.asset, required this.title, required this.onTap})
       : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -65,30 +64,30 @@ class PayBillsItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-        // height: 80,
-        // width: 55,
+          // height: 80,
+          // width: 55,
           child: Column(
-            children: [
-              Card(
-                elevation: 3,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  height: 55,
-                  width: 55,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Image.asset(asset),
-                ),
+        children: [
+          Card(
+            elevation: 3,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Container(
+              padding: const EdgeInsets.all(8.0),
+              height: 55,
+              width: 55,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
               ),
-              SizedBox(height: 2),
-              Text(title)
-            ],
-          )),
+              child: Image.asset(asset),
+            ),
+          ),
+          SizedBox(height: 2),
+          Text(title)
+        ],
+      )),
     );
   }
 }
@@ -221,5 +220,50 @@ class CustomPrimaryButton extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+class OfferItemCard extends StatelessWidget {
+  final String title;
+  final String details;
+  const OfferItemCard({Key? key, required this.title, required this.details})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        elevation: 4,
+        child: Container(
+          height: 100,
+          width: double.infinity,
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Image.network(
+                    "https://i.pinimg.com/originals/7b/de/8f/7bde8ff233de3111f1ba21f8c127d592.png"),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  height: 70,
+                  width: 240,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(title,
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold)),
+                      Text(details.substring(0, 160),
+                          textAlign: TextAlign.justify, style: TextStyle()),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ));
   }
 }
