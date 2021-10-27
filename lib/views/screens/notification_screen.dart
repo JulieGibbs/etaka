@@ -57,13 +57,18 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
                       Column(
                         children:[
-                          Text(" Name ", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black)),
+                          Text(" New Offer on Payment ", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black)),
+                          Text("Offer Details .....",style: TextStyle(fontSize: 15, color: Colors.grey))
 
-                          Text("22-Oct-2021     12:19 AM",style: TextStyle(fontSize: 15, color: Colors.grey),),
                         ],
                       ),
-                      Spacer(flex: 2,),
-                      Text("+ 12,000 Tk", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green),)
+                      //Spacer(flex: 2,),
+                      Column(
+                        children:[
+                          Text("12:19 AM", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.grey),),
+                          Text("22-Oct-2021",style: TextStyle(fontSize: 15, color: Colors.grey),)
+                        ]
+                      ),
                     ],
                   ),
                 ),
