@@ -107,18 +107,18 @@ class _DashboardState extends State<Dashboard> {
                           onPressed: () {}),
                     ),
                   ),
-                  ClipOval(
-                    child: Material(
-                      color: Colors
-                          .transparent, //To let the Container background be displayed
-                      child: IconButton(
-                          icon: Icon(
-                            Icons.account_circle_rounded,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {}),
-                    ),
-                  ),
+                  // ClipOval(
+                  //   child: Material(
+                  //     color: Colors
+                  //         .transparent, //To let the Container background be displayed
+                  //     child: IconButton(
+                  //         icon: Icon(
+                  //           Icons.account_circle_rounded,
+                  //           color: Colors.white,
+                  //         ),
+                  //         onPressed: () {}),
+                  //   ),
+                  // ),
                 ]),
               ),
               SizedBox(height: 10),

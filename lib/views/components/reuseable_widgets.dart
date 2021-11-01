@@ -230,6 +230,8 @@ class OfferItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double h = MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
     return Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
@@ -237,7 +239,7 @@ class OfferItemCard extends StatelessWidget {
         elevation: 4,
         child: Container(
           height: 100,
-          width: double.infinity,
+          width: w - 15,
           child: Row(
             children: [
               Padding(
@@ -248,8 +250,7 @@ class OfferItemCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Container(
-                  height: 70,
-                  width: 240,
+                  width: 250,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
