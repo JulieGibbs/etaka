@@ -1,5 +1,6 @@
 import 'package:etaka/logics/models/transaction.dart';
 import 'package:etaka/logics/services/API/api_helper.dart';
+import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -64,7 +65,7 @@ class _TransactionHistoryState extends State<TransactionHistory> {
                           },
                         )
                       : Center(
-                          child: CircularProgressIndicator(),
+                          child: blue_loading,
                         ))
           // Center(
           //   child: Card(

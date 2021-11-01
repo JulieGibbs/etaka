@@ -1,5 +1,6 @@
 import 'package:etaka/logics/models/offer.dart';
 import 'package:etaka/logics/services/API/api_helper.dart';
+import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -75,7 +76,7 @@ class _OfferScreenState extends State<OfferScreen> {
                           },
                         )
                       : Center(
-                          child: CircularProgressIndicator(),
+                          child: blue_loading,
                         ))
         ],
       ),
