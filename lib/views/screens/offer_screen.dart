@@ -40,9 +40,9 @@ class _OfferScreenState extends State<OfferScreen> {
         children: [
           Padding(
             padding:
-                const EdgeInsets.only(top: 50, left: 25, right: 25, bottom: 15),
+                const EdgeInsets.only(top: 20, left: 25, right: 25, bottom: 15),
             child: Text(
-              "Current Offers",
+              "Current Offers".toUpperCase(),
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
             ),
           ),
