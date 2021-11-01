@@ -384,4 +384,26 @@ class APIService {
     var data = json.decode(response.body);
     return response.body;
   }
+
+  Future<String> gettranHistory() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('token') ?? "";
+    var uri =
+        Uri.parse("https://ssoad.pythonanywhere.com/transaction/history/");
+    var response;
+    try {
+      response = await http.get(
+        uri,
+        headers: {
+          "Content-type": "application/json",
+          "Authorization": token,
+        },
+      );
+      print(response.body);
+    } catch (e) {
+      print(e);
+    }
+    var data = json.decode(response.body);
+    return response.body;
+  }
 }
