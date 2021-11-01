@@ -76,7 +76,11 @@ class _BillPaymentState extends State<BillPayment> {
                           padding: EdgeInsets.all(15),
                           child: Row(
                             children: [
-                              Icon(Icons.wc, color: Colors.grey),
+                              Container(
+                                  height: 50,
+                                  width: 50,
+                                  child:
+                                      Image.network(merchants[index].photo!)),
                               SizedBox(
                                 width: 20,
                               ),

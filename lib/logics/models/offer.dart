@@ -1,13 +1,13 @@
 // To parse this JSON data, do
 //
-//     final offers = offersFromJson(jsonString);
+//     final offer = offerFromJson(jsonString);
 
 import 'dart:convert';
 
-List<Offer> offersFromJson(String str) =>
+List<Offer> offerFromJson(String str) =>
     List<Offer>.from(json.decode(str).map((x) => Offer.fromJson(x)));
 
-String offersToJson(List<Offer> data) =>
+String offerToJson(List<Offer> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Offer {
@@ -17,6 +17,7 @@ class Offer {
     required this.details,
     required this.startDatetime,
     required this.endDatetime,
+    this.photo,
     required this.location,
   });
 
@@ -25,6 +26,7 @@ class Offer {
   String details;
   DateTime startDatetime;
   DateTime endDatetime;
+  String? photo;
   String location;
 
   factory Offer.fromJson(Map<String, dynamic> json) => Offer(
@@ -33,6 +35,7 @@ class Offer {
         details: json["details"],
         startDatetime: DateTime.parse(json["start_datetime"]),
         endDatetime: DateTime.parse(json["end_datetime"]),
+        photo: json["photo"] == null ? null : json["photo"],
         location: json["location"],
       );
 
@@ -42,6 +45,7 @@ class Offer {
         "details": details,
         "start_datetime": startDatetime.toIso8601String(),
         "end_datetime": endDatetime.toIso8601String(),
+        "photo": photo == null ? null : photo,
         "location": location,
       };
 }

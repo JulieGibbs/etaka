@@ -2,6 +2,7 @@ import 'package:etaka/logics/models/transaction.dart';
 import 'package:etaka/logics/services/API/api_helper.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'constant.dart';
 
@@ -189,7 +190,7 @@ class IndicatorRow extends StatelessWidget {
           Indicator(
             color: const Color(0xff13d38e),
             text:
-                '${(((billpay) / (send + cashout + recharge + billpay)) * 100).toStringAsFixed(0)}% Billpay',
+                '${(((billpay) / (send + cashout + recharge + billpay)) * 100).toStringAsFixed(0)}% Bill Pay',
           ),
         ],
       ),
@@ -206,6 +207,7 @@ class ExpenseWidget extends StatefulWidget {
 
 class _ExpenseWidgetState extends State<ExpenseWidget> {
   late List<Transaction> trns;
+  late String start_date, stop_date;
   late double expense = 0, send = 0, recharge = 0, cashout = 0, billpay = 0;
   bool isLoading = true;
   @override
@@ -230,6 +232,8 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
         billpay = billpay + trns[i].amount;
       }
     }
+    stop_date = trns.first.datetime.toString();
+    start_date = trns.last.datetime.toString();
     print("======PIE CHART====");
     print(billpay);
     setState(() {
@@ -269,7 +273,7 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                         ),
                         SizedBox(height: 2),
                         Text(
-                          "1 Sep 2021 - 30 Sep 2021",
+                          "${DateFormat('yyyy-MMM-dd').format(DateTime.parse(start_date))} - ${DateFormat('yyyy-MMM-dd').format(DateTime.parse(start_date))}",
                           style: TextStyle(
                               color: Colors.black38,
                               fontSize: 15,

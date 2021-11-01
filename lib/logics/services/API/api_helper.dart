@@ -225,6 +225,7 @@ class APIService {
     } catch (e) {
       print(e);
     }
+    print(response.body);
     print(response.statusCode);
     // var data = jsonDecode(response.body);
     if (response.statusCode == 200) {

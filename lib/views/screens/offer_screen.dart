@@ -23,7 +23,7 @@ class _OfferScreenState extends State<OfferScreen> {
   Future<List<Offer>> getdata() async {
     APIService api = APIService();
     var data = await api.getOffers();
-    offers = offersFromJson(data);
+    offers = offerFromJson(data);
     print(offers.length);
     setState(() {
       isLoading = false;
