@@ -26,6 +26,7 @@ class APIService {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString("token", data['session_token']);
       } else {
+        print(response.body);
         error_toast("Connection error");
         return false;
       }

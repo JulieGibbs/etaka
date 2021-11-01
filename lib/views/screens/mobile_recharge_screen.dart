@@ -23,7 +23,7 @@ class _MobileRechargeScreenState extends State<MobileRechargeScreen> {
             height: 150,
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(25, 0, 0, 0),
+            padding: const EdgeInsets.fromLTRB(20, 0, 0, 20),
             child: Text(
               "Mobile Recharge",
               style: TextStyle(
@@ -35,6 +35,7 @@ class _MobileRechargeScreenState extends State<MobileRechargeScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
             child: TextField(
+              keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                   hintText: "017xxxxxxxx", labelText: "Enter Mobile Number"),
             ),
@@ -49,6 +50,7 @@ class _MobileRechargeScreenState extends State<MobileRechargeScreen> {
               bottom: 10,
             ),
             child: TextField(
+              keyboardType: TextInputType.number,
               decoration:
                   InputDecoration(hintText: "1000", labelText: "Enter Amount"),
             ),
@@ -56,16 +58,16 @@ class _MobileRechargeScreenState extends State<MobileRechargeScreen> {
           SizedBox(
             height: 10,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
-            child: TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                hintText: "******",
-                labelText: "prepaid or Postpaid",
-              ),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
+          //   child: TextField(
+          //     obscureText: true,
+          //     decoration: InputDecoration(
+          //       hintText: "******",
+          //       labelText: "Pin",
+          //     ),
+          //   ),
+          // ),
           SizedBox(
             height: 20,
           ),

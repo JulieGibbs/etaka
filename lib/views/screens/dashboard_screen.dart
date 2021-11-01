@@ -166,6 +166,7 @@ class _DashboardState extends State<Dashboard> {
         ),
         SizedBox(),
         Container(
+            padding: EdgeInsets.fromLTRB(10, 10, 10, 30),
             decoration: BoxDecoration(color: Color(0xFFEEF2F8)),
             width: double.infinity,
             child: Column(

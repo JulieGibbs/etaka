@@ -246,85 +246,104 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
-      child: Card(
-        elevation: 5,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-              color: Color(0xFFEEF2F8),
-              borderRadius: BorderRadius.circular(15)),
-          child: Column(
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
+      child: !isLoading
+          ? trns.length != 0
+              ? Card(
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Color(0xFFEEF2F8),
+                        borderRadius: BorderRadius.circular(15)),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Expenses".toUpperCase(),
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.normal),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Expenses".toUpperCase(),
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.normal),
+                                  ),
+                                  SizedBox(height: 2),
+                                  if (!isLoading)
+                                    Text(
+                                      "${DateFormat('yyyy-MMM-dd').format(DateTime.parse(start_date))} - ${DateFormat('yyyy-MMM-dd').format(DateTime.parse(start_date))}",
+                                      style: TextStyle(
+                                          color: Colors.black38,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.normal),
+                                    ),
+                                  SizedBox(height: 10),
+                                  if (!isLoading)
+                                    Text(
+                                      "BDT ${send + cashout + recharge + billpay}",
+                                      style: TextStyle(
+                                          color: Colors.black87,
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                ],
+                              ),
+                            ),
+                            Spacer(),
+                            !isLoading
+                                ? Container(
+                                    height: 130,
+                                    width: 130,
+                                    child: PieChartSample2(
+                                      recharge: (((recharge) /
+                                                  (send +
+                                                      recharge +
+                                                      cashout +
+                                                      billpay)) *
+                                              100)
+                                          .toInt(),
+                                      send: (((send) /
+                                                  (send +
+                                                      recharge +
+                                                      cashout +
+                                                      billpay)) *
+                                              100)
+                                          .toInt(),
+                                      cashout: (((cashout) /
+                                                  (send +
+                                                      recharge +
+                                                      cashout +
+                                                      billpay)) *
+                                              100)
+                                          .toInt(),
+                                      billpay: (((billpay) /
+                                                  (send +
+                                                      recharge +
+                                                      cashout +
+                                                      billpay)) *
+                                              100)
+                                          .toInt(),
+                                    ))
+                                : blue_loading,
+                          ],
                         ),
-                        SizedBox(height: 2),
-                        Text(
-                          "${DateFormat('yyyy-MMM-dd').format(DateTime.parse(start_date))} - ${DateFormat('yyyy-MMM-dd').format(DateTime.parse(start_date))}",
-                          style: TextStyle(
-                              color: Colors.black38,
-                              fontSize: 15,
-                              fontWeight: FontWeight.normal),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "BDT ${send + cashout + recharge + billpay}",
-                          style: TextStyle(
-                              color: Colors.black87,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w500),
-                        ),
+                        IndicatorRow(
+                            recharge: recharge,
+                            send: send,
+                            cashout: cashout,
+                            billpay: billpay)
                       ],
                     ),
                   ),
-                  Spacer(),
-                  !isLoading
-                      ? Container(
-                          height: 130,
-                          width: 130,
-                          child: PieChartSample2(
-                            recharge: (((recharge) /
-                                        (send + recharge + cashout + billpay)) *
-                                    100)
-                                .toInt(),
-                            send: (((send) /
-                                        (send + recharge + cashout + billpay)) *
-                                    100)
-                                .toInt(),
-                            cashout: (((cashout) /
-                                        (send + recharge + cashout + billpay)) *
-                                    100)
-                                .toInt(),
-                            billpay: (((billpay) /
-                                        (send + recharge + cashout + billpay)) *
-                                    100)
-                                .toInt(),
-                          ))
-                      : blue_loading,
-                ],
-              ),
-              IndicatorRow(
-                  recharge: recharge,
-                  send: send,
-                  cashout: cashout,
-                  billpay: billpay)
-            ],
-          ),
-        ),
-      ),
+                )
+              : Container()
+          : Container(),
     );
   }
 }

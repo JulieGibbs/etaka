@@ -1,3 +1,4 @@
+import 'package:etaka/logics/models/offer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -224,14 +225,15 @@ class CustomPrimaryButton extends StatelessWidget {
 }
 
 class OfferItemCard extends StatelessWidget {
-  final String title;
-  final String details;
-  const OfferItemCard({Key? key, required this.title, required this.details})
-      : super(key: key);
+  final Offer offer;
+  const OfferItemCard({Key? key, required this.offer}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
         elevation: 4,
         child: Container(
           height: 100,
@@ -240,8 +242,8 @@ class OfferItemCard extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Image.network(
-                    "https://i.pinimg.com/originals/7b/de/8f/7bde8ff233de3111f1ba21f8c127d592.png"),
+                child: Container(
+                    height: 60, width: 60, child: Image.network(offer.photo!)),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -253,13 +255,13 @@ class OfferItemCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text(title,
+                      Text(offer.title,
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold)),
                       Text(
-                          details.length > 160
-                              ? details.substring(0, 160)
-                              : details,
+                          offer.details.length > 160
+                              ? offer.details.substring(0, 160)
+                              : offer.details,
                           textAlign: TextAlign.justify,
                           style: TextStyle()),
                     ],

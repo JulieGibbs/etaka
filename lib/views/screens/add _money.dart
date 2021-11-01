@@ -41,6 +41,7 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
               bottom: 10,
             ),
             child: TextField(
+              keyboardType: TextInputType.number,
               onChanged: (val) {
                 setState(() {
                   amount = double.parse(val);

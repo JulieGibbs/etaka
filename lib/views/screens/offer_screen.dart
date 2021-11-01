@@ -70,8 +70,7 @@ class _OfferScreenState extends State<OfferScreen> {
                           itemCount: snapshot.data!.length,
                           itemBuilder: (BuildContext context, index) {
                             return OfferItemCard(
-                              title: snapshot.data![index].title,
-                              details: snapshot.data![index].details,
+                              offer: snapshot.data![index],
                             );
                           },
                         )

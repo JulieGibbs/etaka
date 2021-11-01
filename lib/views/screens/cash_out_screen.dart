@@ -37,6 +37,7 @@ class _CashOutScreenState extends State<CashOutScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
             child: TextField(
+              keyboardType: TextInputType.phone,
               onChanged: (val) {
                 agent = val;
               },
@@ -54,6 +55,7 @@ class _CashOutScreenState extends State<CashOutScreen> {
               bottom: 10,
             ),
             child: TextField(
+              keyboardType: TextInputType.number,
               onChanged: (val) {
                 amount = double.parse(val);
               },
@@ -67,6 +69,7 @@ class _CashOutScreenState extends State<CashOutScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
             child: TextField(
+              keyboardType: TextInputType.number,
               onChanged: (val) {
                 pin = val;
               },

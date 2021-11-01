@@ -3,6 +3,7 @@ import 'package:etaka/logics/services/API/api_helper.dart';
 import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'loading_screen.dart';
@@ -146,10 +147,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     pref.remove("user_exist");
                     pref.remove("token");
                     pref.remove("phone_number");
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => LoadingScreen()));
+                    // Navigator.pushReplacement(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => LoadingScreen()));
+                    pushNewScreen(
+                      context,
+                      screen: LoadingScreen(),
+                      withNavBar: true, // OPTIONAL VALUE. True by default.
+                      pageTransitionAnimation:
+                          PageTransitionAnimation.cupertino,
+                    );
                   },
                   leading: Icon(
                     Icons.logout,

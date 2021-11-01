@@ -57,6 +57,7 @@ class _PayBillConfirmState extends State<PayBillConfirm> {
               bottom: 10,
             ),
             child: TextField(
+              keyboardType: TextInputType.number,
               onChanged: (val) {
                 amount = double.parse(val);
               },
@@ -70,6 +71,7 @@ class _PayBillConfirmState extends State<PayBillConfirm> {
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
             child: TextField(
+              keyboardType: TextInputType.number,
               onChanged: (val) {
                 pin = val;
               },

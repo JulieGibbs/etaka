@@ -40,6 +40,7 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
             child: TextField(
+              keyboardType: TextInputType.phone,
               onChanged: (val) {
                 setState(() {
                   receiver = val;
@@ -60,6 +61,7 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
               bottom: 10,
             ),
             child: TextField(
+              keyboardType: TextInputType.number,
               onChanged: (val) {
                 setState(() {
                   amount = double.parse(val);
