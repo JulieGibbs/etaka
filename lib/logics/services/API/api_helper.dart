@@ -337,6 +337,7 @@ class APIService {
       print(e);
     }
     print(response.statusCode);
+    print(response.body);
     // var data = jsonDecode(response.body);
     if (response.statusCode == 200) {
       return true;

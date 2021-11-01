@@ -320,63 +320,7 @@ class _DashboardState extends State<Dashboard> {
               ],
             )),
         SizedBox(height: 10),
-        Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Card(
-            elevation: 5,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Color(0xFFEEF2F8),
-                  borderRadius: BorderRadius.circular(15)),
-              child: Column(
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Expenses".toUpperCase(),
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.normal),
-                            ),
-                            SizedBox(height: 2),
-                            Text(
-                              "1 Sep 2021 - 30 Sep 2021",
-                              style: TextStyle(
-                                  color: Colors.black38,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.normal),
-                            ),
-                            SizedBox(height: 10),
-                            Text(
-                              "BDT 26,600",
-                              style: TextStyle(
-                                  color: Colors.black87,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Spacer(),
-                      Container(
-                          height: 130, width: 130, child: PieChartSample2()),
-                    ],
-                  ),
-                  IndicatorRow()
-                ],
-              ),
-            ),
-          ),
-        ),
+        ExpenseWidget()
       ]),
     );
   }

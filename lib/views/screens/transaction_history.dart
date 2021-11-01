@@ -233,6 +233,14 @@ class TransactionHistoryItem extends StatelessWidget {
 String full_type(String short) {
   if (short == "ADDMONEY") {
     return "Add Money";
+  } else if (short == "RECEIVE") {
+    return "Receive Money";
+  } else if (short == "BILLPAY") {
+    return "Bill Payment";
+  } else if (short == "RECHARGE") {
+    return "Mobile Recharge";
+  } else if (short == "SEND") {
+    return "Send Money";
   }
   return "";
 }

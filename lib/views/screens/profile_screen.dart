@@ -3,9 +3,12 @@ import 'package:etaka/logics/services/API/api_helper.dart';
 import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'loading_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  ProfileScreen({Key? key}) : super(key: key);
 
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -100,7 +103,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ListView(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            children: const <Widget>[
+            children: [
               Text(
                 "Settings",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
@@ -132,6 +135,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     color: Colors.amber,
                   ),
                   title: Text('Change Permissions'),
+                  trailing: Icon(Icons.arrow_forward),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  onTap: () async {
+                    SharedPreferences pref =
+                        await SharedPreferences.getInstance();
+                    pref.remove("user_exist");
+                    pref.remove("token");
+                    pref.remove("phone_number");
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LoadingScreen()));
+                  },
+                  leading: Icon(
+                    Icons.logout,
+                    color: Colors.red,
+                  ),
+                  title: Text('Logout'),
                   trailing: Icon(Icons.arrow_forward),
                 ),
               ),
