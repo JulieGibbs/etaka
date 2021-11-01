@@ -256,8 +256,12 @@ class OfferItemCard extends StatelessWidget {
                       Text(title,
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold)),
-                      Text(details.substring(0, 160),
-                          textAlign: TextAlign.justify, style: TextStyle()),
+                      Text(
+                          details.length > 160
+                              ? details.substring(0, 160)
+                              : details,
+                          textAlign: TextAlign.justify,
+                          style: TextStyle()),
                     ],
                   ),
                 ),
