@@ -16,9 +16,4 @@ samples, guidance on mobile development, and a full API reference.
 
 # Screenshots:
 
-<img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/1.png" alt="drawing" style="width:250px;"/> 
-<img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/2.png" alt="drawing" style="width:250px;"/> 
-<img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/3.png" alt="drawing" style="width:250px;"/> 
-<img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/4.png" alt="drawing" style="width:250px;"/> 
-<img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/5.png" alt="drawing" style="width:250px;"/> 
-<img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/6.png" alt="drawing" style="width:250px;"/>
+<img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/1.png" alt="drawing" style="width:250px;"/> <img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/2.png" alt="drawing" style="width:250px;"/> <img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/3.png" alt="drawing" style="width:250px;"/> <img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/4.png" alt="drawing" style="width:250px;"/> <img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/5.png" alt="drawing" style="width:250px;"/> <img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/6.png" alt="drawing" style="width:250px;"/>
