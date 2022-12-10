@@ -1,6 +1,15 @@
 # etaka
 A Cross Platform Mobile Financial Service (MFS) Application
 
+## Project environment
+
+[![Build Status](https://github.com/simplezhli/flutter_deer/workflows/flutter_deer%20driver/badge.svg?branch=master)](https://github.com/simplezhli/flutter_deer/actions?query=workflow%3A%22flutter_deer+driver%22+branch%3Amaster)
+
+    1. Flutter version 3.3.7
+
+    2. Dart version 2.18.4
+
+
 ## ✨ Requirements
 * Any Operating System (ie. MacOS X, Linux, Windows)
 * Any IDE with Flutter SDK installed (ie. IntelliJ, Android Studio, VSCode etc)
