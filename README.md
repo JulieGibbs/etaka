@@ -3,7 +3,7 @@ A Cross Platform Mobile Financial Service (MFS) Application
 
 ## Project environment
 
-[![Build Status](https://github.com/simplezhli/flutter_deer/workflows/flutter_deer%20driver/badge.svg?branch=master)](https://github.com/simplezhli/flutter_deer/actions?query=workflow%3A%22flutter_deer+driver%22+branch%3Amaster)
+[![eTaka Workflow](https://github.com/ssoad/etaka/actions/workflows/dart.yml/badge.svg)](https://github.com/ssoad/etaka/actions/workflows/dart.yml)
 
     1. Flutter version 3.3.7
 
