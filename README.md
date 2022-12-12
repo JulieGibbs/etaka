@@ -1,7 +1,7 @@
 # etaka
 A Cross Platform Mobile Financial Service (MFS) Application
 
-## Project environment
+## 🔥Project environment
 
 [![eTaka Workflow](https://github.com/ssoad/etaka/actions/workflows/dart.yml/badge.svg)](https://github.com/ssoad/etaka/actions/workflows/dart.yml)
 
@@ -16,6 +16,21 @@ A Cross Platform Mobile Financial Service (MFS) Application
 * A little knowledge of Dart and Flutter
 * A brain to think 🤓🤓
 
+## 🔥Usage
+
+Make sure you have Flutter installed on your local machine. For more instructions on how to install flutter, look [here](https://flutter.io/docs/get-started/install).
+```
+git clone https://github.com/2d-inc/HistoryOfEverything.git
+cd HistoryOfEverything/app
+git submodule init
+git submodule update
+flutter run
+```
+
+## 📸 ScreenShots
+
+<img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/1.png" alt="drawing" style="width:250px;"/> <img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/2.png" alt="drawing" style="width:250px;"/> <img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/3.png" alt="drawing" style="width:250px;"/> <img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/4.png" alt="drawing" style="width:250px;"/> <img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/5.png" alt="drawing" style="width:250px;"/> <img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/6.png" alt="drawing" style="width:250px;"/>
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
@@ -28,7 +43,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-
-## 📸 ScreenShots
-
-<img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/1.png" alt="drawing" style="width:250px;"/> <img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/2.png" alt="drawing" style="width:250px;"/> <img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/3.png" alt="drawing" style="width:250px;"/> <img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/4.png" alt="drawing" style="width:250px;"/> <img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/5.png" alt="drawing" style="width:250px;"/> <img src="https://github.com/ssoad/etaka/raw/master/docs/imgs/6.png" alt="drawing" style="width:250px;"/>
