@@ -14,7 +14,7 @@ jobs:
           flutter-version: '2.10.0'
           channel: 'stable'
 
-      - name: Install dependencies
-        run: flutter pub get
-      - name: Flutter Test
-        run: flutter build apk
+#       - name: Install dependencies
+#         run: flutter pub get
+#       - name: Flutter Test
+#         run: flutter build apk
