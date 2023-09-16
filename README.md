@@ -1,5 +1,5 @@
 # etaka
-A Cross Platform Mobile Financial Service (MFS) Application
+A Cross Platform Mobile Financial Service (MFS) Application. eTaka is a Mobile Financial Mobile Application based on P2P Banking Concept for Android and iOS Platform Developed By Flutter and Django REST Backend
 
 ## 🔥Project environment
 
