@@ -64,7 +64,7 @@ class TransactionFailedState extends State<TransactionFailed> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                primary: primaryColor,
+                backgroundColor: primaryColor,
               ),
               onPressed: () {
                 Navigator.push(

@@ -162,7 +162,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                primary: primaryColor,
+                backgroundColor: primaryColor,
               ),
               onPressed: () async {
                 APIService api = APIService();

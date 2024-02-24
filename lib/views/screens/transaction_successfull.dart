@@ -106,7 +106,7 @@ Available Balance : ${profile.balance.toStringAsFixed(2)}""",
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      primary: primaryColor,
+                      backgroundColor: primaryColor,
                     ),
                     onPressed: () {
                       Navigator.pop(context);

@@ -82,7 +82,7 @@ class _MobileRechargeScreenState extends State<MobileRechargeScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                primary: primaryColor,
+                backgroundColor: primaryColor,
               ),
               onPressed: () {
                 Navigator.push(

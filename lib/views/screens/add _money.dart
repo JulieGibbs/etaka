@@ -75,7 +75,7 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                primary: primaryColor,
+                backgroundColor: primaryColor,
               ),
               onPressed: () {
                 AddMoney();

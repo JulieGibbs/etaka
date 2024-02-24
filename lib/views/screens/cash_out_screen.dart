@@ -94,7 +94,7 @@ class _CashOutScreenState extends State<CashOutScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                primary: primaryColor,
+                backgroundColor: primaryColor,
               ),
               onPressed: () async {
                 APIService api = APIService();

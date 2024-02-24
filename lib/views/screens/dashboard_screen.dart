@@ -4,7 +4,9 @@ import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/pie_chart.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:etaka/views/screens/send_money_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'add _money.dart';
 import 'bill_payment_screen.dart';
@@ -23,7 +25,6 @@ class _DashboardState extends State<Dashboard> {
   bool isLoading = true;
   @override
   void initState() {
-    // TODO: implement initState
     getdata();
     super.initState();
   }
@@ -31,8 +32,8 @@ class _DashboardState extends State<Dashboard> {
   Future<void> getdata() async {
     APIService api = APIService();
     var data = await api.getProfileData();
-    String loc = await api.getLocationCity();
-    print(loc.toUpperCase());
+    // String loc = await api.getLocationCity();
+    // print(loc.toUpperCase());
 
     profile = Profile.fromJson(data);
     setState(() {
@@ -53,72 +54,79 @@ class _DashboardState extends State<Dashboard> {
             children: [
               SafeArea(
                 child: Row(children: [
-                  isLoading
-                      ? loading
-                      : Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("BDT ${profile.balance.toStringAsFixed(2)}",
-                                  style: TextStyle(
-                                      fontSize: 26,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold)),
-                              Text("active balance".toUpperCase(),
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.white.withOpacity(0.6))),
-                            ],
+                  Expanded(
+                    flex: 3,
+                    child: isLoading
+                        ? loading
+                        : Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                    "BDT ${profile.balance.toStringAsFixed(2)}",
+                                    style: TextStyle(
+                                        fontSize: 26,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold)),
+                                Text("active balance".toUpperCase(),
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white.withOpacity(0.6))),
+                              ],
+                            ),
                           ),
-                        ),
-                  ElevatedButton(
-                    child: Text(' + Add Money',
-                        style: TextStyle(
-                            color: primaryColor, fontWeight: FontWeight.bold)),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      primary: Colors.white,
-                    ),
-                    onPressed: () async {
-                      var c = await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddMoneyScreen(
-                                    profile: profile,
-                                  )));
-                      await getdata();
-                      setState(() {});
-                    },
                   ),
-                  Spacer(),
+                  Expanded(
+                    flex: 2,
+                    child: ElevatedButton(
+                      child: Text(' + Add Money',
+                          style: TextStyle(
+                              color: primaryColor,
+                              fontWeight: FontWeight.bold)),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        backgroundColor: Colors.white,
+                      ),
+                      onPressed: () async {
+                        var c = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddMoneyScreen(
+                                      profile: profile,
+                                    )));
+                        await getdata();
+                        setState(() {});
+                      },
+                    ),
+                  ),
                   ClipOval(
                     child: Material(
-                       color: Colors
-                           .transparent, //To let the Container background be displayed
-                       child: IconButton(
-                           icon: Icon(
-                             Icons.notifications,
-                             color: Colors.white,
-                           ),
-                           onPressed: () {}),
-                     ),
-                   ),
-                   ClipOval(
-                     child: Material(
-                       color: Colors
-                           .transparent, //To let the Container background be displayed
-                       child: IconButton(
-                           icon: Icon(
-                             Icons.account_circle_rounded,
-                             color: Colors.white,
-                           ),
-                           onPressed: () {}),
-                     ),
-                   ),
+                      color: Colors
+                          .transparent, //To let the Container background be displayed
+                      child: IconButton(
+                          icon: Icon(
+                            Icons.notifications,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {}),
+                    ),
+                  ),
+                  ClipOval(
+                    child: Material(
+                      color: Colors
+                          .transparent, //To let the Container background be displayed
+                      child: IconButton(
+                          icon: Icon(
+                            Icons.account_circle_rounded,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {}),
+                    ),
+                  ),
                 ]),
               ),
               SizedBox(height: 10),

@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class APIService {
-  String endpoint = 'https://ssoad.pythonanywhere.com/';
+  String endpoint = 'https://sssoad.pythonanywhere.com/';
 
   Future<dynamic> login(String phoneNumber) async {
     String funcURL = 'phone/register';
@@ -375,7 +375,7 @@ class APIService {
   Future<String> getOffers() async {
     String city = await getLocationCity();
     var uri = Uri.parse(
-        "https://ssoad.pythonanywhere.com/transaction/offers/?location=${city}");
+        "https://sssoad.pythonanywhere.com/transaction/offers/?location=${city}");
     var response;
     try {
       response = await http.get(
@@ -392,7 +392,7 @@ class APIService {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String token = prefs.getString('token') ?? "";
     var uri =
-        Uri.parse("https://ssoad.pythonanywhere.com/transaction/history/");
+        Uri.parse("https://sssoad.pythonanywhere.com/transaction/history/");
     var response;
     try {
       response = await http.get(

@@ -109,7 +109,7 @@ class _SendMoneyConfirmationState extends State<SendMoneyConfirmation> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
-              primary: primaryColor,
+              backgroundColor: primaryColor,
             ),
             onPressed: () async {
               await sendmoney();

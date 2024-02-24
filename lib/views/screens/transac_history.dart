@@ -43,7 +43,7 @@ class _TransactionPageState extends State<TransactionPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).cardColor,
-        brightness: Theme.of(context).brightness,
+        systemOverlayStyle: Theme.of(context).appBarTheme.systemOverlayStyle,
         iconTheme: Theme.of(context).iconTheme,
         title: Text(
           "Transaction History",
@@ -177,20 +177,20 @@ class _TransactionPageState extends State<TransactionPage> {
             flex: 1,
             child: Container(
               width: 2,
-              color: Theme.of(context).accentColor,
+              color: Theme.of(context).primaryColor,
             ),
           ),
           Container(
             width: 6,
             height: 6,
             decoration: BoxDecoration(
-                color: Theme.of(context).accentColor, shape: BoxShape.circle),
+                color: Theme.of(context).primaryColor, shape: BoxShape.circle),
           ),
           Expanded(
             flex: 1,
             child: Container(
               width: 2,
-              color: Theme.of(context).accentColor,
+              color: Theme.of(context).primaryColor,
             ),
           ),
         ],

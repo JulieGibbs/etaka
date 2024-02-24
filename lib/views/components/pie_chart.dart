@@ -232,8 +232,8 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
         billpay = billpay + trns[i].amount;
       }
     }
-    stop_date = trns.first.datetime.toString();
-    start_date = trns.last.datetime.toString();
+    stop_date = trns.isNotEmpty ? trns.first.datetime.toString() : "";
+    start_date = trns.isNotEmpty ? trns.last.datetime.toString() : "";
     print("======PIE CHART====");
     print(billpay);
     setState(() {

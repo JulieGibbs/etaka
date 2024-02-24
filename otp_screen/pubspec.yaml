@@ -5,8 +5,9 @@ author: Lokesh Chennamchetty <chennamchettyl@gmail.com>
 homepage: https://github.com/lokesh-sudhakar/Flutter-OtpScreen.git
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.17.0 <2.0.0"
+  # sdk: '>=3.1.5 <4.0.0'
+  flutter: ">=3.1.5 <4.0.0"
+  sdk: '^3.3.0'
 
 dependencies:
   flutter:

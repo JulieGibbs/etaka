@@ -111,7 +111,7 @@ class _OTPScreenState extends State<OTPScreen> {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             constraints: const BoxConstraints(maxWidth: 500),
-            child: RaisedButton(
+            child: ElevatedButton(
               onPressed: () async {
                 print(text);
                 APIService api = APIService();
@@ -135,9 +135,16 @@ class _OTPScreenState extends State<OTPScreen> {
                   error_toast("Invalid OTP");
                 }
               },
-              color: primaryColor,
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(14))),
+              // ba: primaryColor,
+              // shape: const RoundedRectangleBorder(
+              //     borderRadius: BorderRadius.all(Radius.circular(14))),
+              style: ElevatedButton.styleFrom(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                backgroundColor: primaryColor,
+              ),
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                 child: Row(

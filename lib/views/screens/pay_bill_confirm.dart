@@ -96,7 +96,7 @@ class _PayBillConfirmState extends State<PayBillConfirm> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                primary: primaryColor,
+                backgroundColor: primaryColor,
               ),
               onPressed: () async {
                 APIService api = APIService();

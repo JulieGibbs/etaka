@@ -95,7 +95,7 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                primary: primaryColor,
+                backgroundColor: primaryColor,
               ),
               onPressed: () {
                 SendMoney();
