@@ -23,7 +23,7 @@ class Transaction {
   String transType;
   double amount;
   DateTime datetime;
-  int user;
+  String user;
 
   factory Transaction.fromJson(Map<String, dynamic> json) => Transaction(
         transId: json["trans_id"],

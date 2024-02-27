@@ -4,6 +4,8 @@ import 'package:etaka/views/components/constant.dart';
 import 'package:etaka/views/components/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
 
+import '../../logics/services/pdf_generator.dart';
+
 class TransactionHistory extends StatefulWidget {
   const TransactionHistory({Key? key}) : super(key: key);
 
@@ -35,6 +37,15 @@ class _TransactionHistoryState extends State<TransactionHistory> {
   Widget build(BuildContext context) {
     return CustomScaffold(
       isRoot: true,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 50.0),
+        child: FloatingActionButton(
+          onPressed: () {
+            PdfGenerator.generateTransactionHistoryPDF(trns);
+          },
+          child: Icon(Icons.download),
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

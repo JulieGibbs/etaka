@@ -128,7 +128,16 @@ class CustomBackButton extends StatelessWidget {
 class CustomScaffold extends StatelessWidget {
   final Widget body;
   final bool isRoot;
-  const CustomScaffold({Key? key, required this.body, this.isRoot = false})
+  final PreferredSizeWidget? appBar;
+  final Widget? bottomBar;
+  final Widget? floatingActionButton;
+  const CustomScaffold(
+      {Key? key,
+      required this.body,
+      this.isRoot = false,
+      this.appBar,
+      this.bottomBar,
+      this.floatingActionButton})
       : super(key: key);
 
   @override
@@ -137,6 +146,8 @@ class CustomScaffold extends StatelessWidget {
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: appBar,
+      floatingActionButton: floatingActionButton,
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -209,7 +220,7 @@ class CustomPrimaryButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-         backgroundColor: primaryColor,
+          backgroundColor: primaryColor,
         ),
         onPressed: () {
           onTap.call();
